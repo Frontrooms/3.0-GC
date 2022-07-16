@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 4025
+// EnetChannelId: 0
+// EnetIsReliable: true
+// IsAllowClient: true
+message UpdatePlayerShowAvatarListReq {
+	repeated uint32 show_avatar_id_list = 13;
+	bool is_show_avatar = 2;
+}

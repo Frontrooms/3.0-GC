@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+
+message DoGachaReq {
+	enum CmdId {
+		option allow_alias = true;
+		NONE = 0;
+		ENET_CHANNEL_ID = 0;
+		ENET_IS_RELIABLE = 1;
+		IS_ALLOW_CLIENT = 1;
+		CMD_ID = 1541;
+	}
+
+	uint32 gacha_type = 10;
+	uint32 gacha_times = 15;
+	uint32 gacha_random = 5;
+	uint32 gacha_schedule_id = 6;
+	string gacha_tag = 4;
+}

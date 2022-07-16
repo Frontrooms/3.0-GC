@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 177
+// EnetChannelId: 0
+// EnetIsReliable: true
+message TakePlayerLevelRewardRsp {
+	int32 retcode = 14;
+	uint32 level = 13;
+	uint32 reward_id = 12;
+}

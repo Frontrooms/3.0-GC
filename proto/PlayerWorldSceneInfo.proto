@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+message PlayerWorldSceneInfo {
+	uint32 scene_id = 13;
+	bool is_locked = 6;
+	repeated uint32 scene_tag_id_list = 9;
+}

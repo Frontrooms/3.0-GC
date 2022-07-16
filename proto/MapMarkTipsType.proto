@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+enum MapMarkTipsType {
+	MAP_MARK_TIPS_TYPE_DUNGEON_ELEMENT_TRIAL = 0;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 254
+// EnetChannelId: 0
+// EnetIsReliable: true
+message EnterWorldAreaRsp {
+	int32 retcode = 15;
+	uint32 area_type = 2;
+	uint32 area_id = 4;
+}
