@@ -24,9 +24,9 @@
 
 3: In the **Options** menu you will see a lot of sub menus. The one we want to go to currently is **HTTPS**. Once you have clicked on **HTTPS**, click on the little box next to the text saying "*Decrypt HTTPS traffic*".
 
-4: After the 4th step, you do not close the options menu but go to the **Connections** submenu. Once you are in the **Connections** submenu, you will see a text saying "*Fiddler Classic listens on port*". By default, the port will be '8888'. You will want to **change** that to anything else, I use 8080.
+4: After the 4th step, you do not close the options menu but go to the **Connections** submenu. Once you are in the **Connections** submenu, you will see a text saying "*Fiddler Classiclistens onport*". By default, the port will be '8888'. You will want to **change** that to anything else, I use 8080.
 
-5: You can now click **OK** in the Options menu and will want to find the **FiddlerScript** button. Once you have clicked on that, you will want to get this script <a href=https://github.lunatic.moe/fiddlerscript>here</a>. Now copy the script and go back into Fiddler. Replace the existing script with the one you just copied and then press the **Save** button.
+5: You can now click **OK** in the Options menu and will want to find the **FiddlerScript** button. Once you have clicked on that, you will want to get this script <a href=https://github.lunatic.moe/fiddlerscript>here</a>. Now copy the script and go back into Fiddler. Replace the existing script with the one you just copied and then press the **Save Script** button.
 
 6: Now you can launch the game but you are still not done. Once you try and login, you will get some popup menus in Fiddler and just confirm to all of them.
 
