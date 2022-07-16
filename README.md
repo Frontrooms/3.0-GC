@@ -29,5 +29,5 @@
 5: Done you can now just use the *start.bat* file to open the server.
 
 6: You will now want to go into your 3.0 Genshin folder and put <a href=https://cdn.discordapp.com/attachments/973630112589307914/996912792672153660/global-metadata.dat>this</a> file in both of these locations:
-	1. "*YOURGENSHINFOLDER/GenshinImpact_Data/Managed/Metadata*"
+	1. "*YOURGENSHINFOLDER/GenshinImpact_Data/Managed/Metadata*"<br>
 	2. "*YOURGENSHINFOLDER/GenshinImpact_Data/Native/Data/Metadata*"
