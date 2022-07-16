@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 1765
+// EnetChannelId: 0
+// EnetIsReliable: true
+message AvatarDieAnimationEndRsp {
+	int32 retcode = 12;
+	uint64 die_guid = 11;
+	uint32 skill_id = 13;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 4083
+// EnetChannelId: 0
+// EnetIsReliable: true
+message UpdatePlayerShowAvatarListRsp {
+	int32 retcode = 2;
+	repeated uint32 show_avatar_id_list = 1;
+	bool is_show_avatar = 8;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "Vector.proto";
+
+message BlossomBriefInfo {
+	uint32 refresh_id = 14;
+	uint32 circle_camp_id = 5;
+	uint32 city_id = 3;
+	uint32 resin = 10;
+	Vector pos = 12;
+	uint32 reward_id = 15;
+	uint32 monster_level = 9;
+	bool is_guide_opened = 4;
+	uint32 state = 6;
+	uint32 scene_id = 11;
+}

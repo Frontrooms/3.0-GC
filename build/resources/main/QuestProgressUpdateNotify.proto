@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+
+message QuestProgressUpdateNotify {
+	enum CmdId {
+		option allow_alias = true;
+		NONE = 0;
+		ENET_CHANNEL_ID = 0;
+		ENET_IS_RELIABLE = 1;
+		CMD_ID = 445;
+	}
+
+	uint32 quest_id = 14;
+	repeated uint32 finish_progress_list = 7;
+	repeated uint32 fail_progress_list = 12;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "ShopGoods.proto";
+
+// CmdId: 741
+// EnetChannelId: 0
+// EnetIsReliable: true
+// IsAllowClient: true
+message BuyGoodsReq {
+	uint32 shop_type = 15;
+	ShopGoods goods = 13;
+	uint32 buy_count = 6;
+}

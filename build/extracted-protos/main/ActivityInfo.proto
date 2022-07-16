@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "ActivityNullDetailInfo.proto";
+import "ActivityWatcherInfo.proto";
+import "MusicGameActivityDetailInfo.proto";
+message ActivityInfo {
+	oneof Detail {
+		ActivityNullDetailInfo sam_lamp_info = 6;
+		ActivityNullDetailInfo crucible_info = 5;
+		ActivityNullDetailInfo salesman_info = 3;
+		ActivityNullDetailInfo trial_avatar_info = 2;
+		ActivityNullDetailInfo delivery_info = 1673;
+		ActivityNullDetailInfo aster_info = 21;
+		ActivityNullDetailInfo flight_info = 25;
+		ActivityNullDetailInfo dragon_spine_info = 31;
+		ActivityNullDetailInfo effigy_info = 32;
+		ActivityNullDetailInfo treasure_map_info = 35;
+		ActivityNullDetailInfo blessing_info = 41;
+		ActivityNullDetailInfo sea_lamp_info = 42;
+		ActivityNullDetailInfo expedition_info = 43;
+		ActivityNullDetailInfo arena_challenge_info = 44;
+		ActivityNullDetailInfo fleur_fair_info = 51;
+		ActivityNullDetailInfo water_spirit_info = 52;
+		ActivityNullDetailInfo challneler_slab_info = 61;
+		ActivityNullDetailInfo mist_trial_activity_info = 62;
+		ActivityNullDetailInfo hide_and_seek_info = 63;
+		ActivityNullDetailInfo find_hilichurl_info = 64;
+		ActivityNullDetailInfo summer_time_info = 65;
+		ActivityNullDetailInfo buoyant_combat_info = 66;
+		ActivityNullDetailInfo echo_shell_info = 67;
+		ActivityNullDetailInfo bounce_conjuring_info = 68;
+		ActivityNullDetailInfo blitz_rush_info = 69;
+		ActivityNullDetailInfo chess_info = 70;
+		ActivityNullDetailInfo sumo_info = 71;
+		ActivityNullDetailInfo moonfin_trial_info = 72;
+		ActivityNullDetailInfo luna_rite_info = 73;
+		ActivityNullDetailInfo plant_flower_info = 74;
+		MusicGameActivityDetailInfo music_game_info = 1612;
+		ActivityNullDetailInfo roguelike_dungoen_info = 76;
+		ActivityNullDetailInfo dig_info = 77;
+	}
+
+	uint32 activity_id = 12;
+	uint32 schedule_id = 10;
+	uint32 begin_time = 13;
+	uint32 end_time = 11;
+	uint32 activity_type = 8;
+	bool is_play_open_anim = 14;
+	bool is_finished = 7;
+	bool is_starting = 9;
+	repeated ActivityWatcherInfo watcher_info_list = 4;
+	repeated uint32 meet_cond_list = 15;
+	repeated uint32 expire_cond_list = 1;
+	uint32 selected_avatar_reward_id = 1394;
+	map<uint32, uint32> activity_coin_map = 1648;
+	uint32 score_limit = 1187;
+	uint32 cur_score = 527;
+	repeated uint32 taken_reward_list = 1262;
+	bool is_hidden = 110;
+	uint32 first_day_start_time = 144;
+
+}

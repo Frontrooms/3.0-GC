@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "WidgetCreateLocationInfo.proto";
+import "WidgetCreatorOpType.proto";
+
+message WidgetCreatorInfo {
+	WidgetCreatorOpType op_type = 11;
+	uint32 entity_id = 8;
+	WidgetCreateLocationInfo location_info = 10;
+}

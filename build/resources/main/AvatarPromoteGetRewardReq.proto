@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 1676
+// EnetChannelId: 0
+// EnetIsReliable: true
+// IsAllowClient: true
+message AvatarPromoteGetRewardReq {
+	uint64 avatar_guid = 12;
+	uint32 promote_level = 8;
+}

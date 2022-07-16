@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+
+message ItemHint {
+	uint32 item_id = 7;
+    uint32 count = 14;
+    bool is_new = 2;
+    uint64 guid = 15;
+}

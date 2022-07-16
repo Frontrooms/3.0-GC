@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "AbilityIdentifier.proto";
+import "HitCollision.proto";
+import "Vector.proto";
+import "AttackHitEffectResult.proto";
+
+message AttackResult {
+	uint32 attacker_id = 5;
+	uint32 defense_id = 10;
+	string anim_event_id = 12;
+	AbilityIdentifier ability_identifier = 7;
+	float damage = 15;
+	bool is_crit = 14;
+	HitCollision hit_collision = 9;
+	uint32 hit_pos_type = 2;
+	uint32 endure_break = 1;
+	Vector resolved_dir = 8;
+	int32 hit_retreat_angle_compat = 4;
+	AttackHitEffectResult hit_eff_result = 11;
+	uint32 element_type = 13;
+	bool use_gadget_damage_action = 1975;
+	uint32 gadget_damage_action_idx = 1092;
+	bool is_resist_text = 1855;
+	uint32 critical_rand = 1064;
+	float element_amplify_rate = 180;
+	float damage_shield = 1602;
+	bool mute_element_hurt = 1725;
+	uint32 amplify_reaction_type = 1690;
+	uint32 addhurt_reaction_type = 335;
+	uint32 bullet_fly_time_ms = 797;
+	uint32 attack_count = 819;
+	uint32 hashed_anim_event_id = 950;
+	uint32 attack_timestamp_ms = 873;
+	float endure_delta = 1088;
+	uint32 target_type = 531;
+	float element_durability_attenuation = 1994;
+	uint32 EGPFEACDCLP = 40;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 1681
+// EnetChannelId: 0
+// EnetIsReliable: true
+message AvatarFlycloakChangeNotify {
+	uint64 avatar_guid = 12;
+	uint32 flycloak_id = 14;
+}

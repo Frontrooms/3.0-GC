@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+message HomeBlockDotPattern {
+	uint32 height = 8;
+	uint32 width = 4;
+	bytes data = 14;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "DungeonEntryInfo.proto";
+
+message DailyDungeonEntryInfo {
+	uint32 dungeon_entry_id = 3;
+	uint32 dungeon_entry_config_id = 1;
+	uint32 recommend_dungeon_id = 13;
+	DungeonEntryInfo recommend_dungeon_entry_info = 7;
+}

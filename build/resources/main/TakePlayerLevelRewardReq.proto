@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 160
+// EnetChannelId: 0
+// EnetIsReliable: true
+// IsAllowClient: true
+message TakePlayerLevelRewardReq {
+	uint32 level = 5;
+}

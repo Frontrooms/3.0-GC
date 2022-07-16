@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "AvatarInfo.proto";
+
+// CmdId: 1757
+// EnetChannelId: 0
+// EnetIsReliable: true
+message AvatarAddNotify {
+	AvatarInfo avatar = 11;
+	bool is_in_team = 15;
+}

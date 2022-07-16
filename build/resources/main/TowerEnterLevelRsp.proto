@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+
+message TowerEnterLevelRsp {
+	enum CmdId {
+		option allow_alias = true;
+		NONE = 0;
+		ENET_CHANNEL_ID = 0;
+		ENET_IS_RELIABLE = 1;
+		CMD_ID = 2427;
+	}
+
+	int32 retcode = 14;
+	uint32 floor_id = 6;
+	uint32 level_index = 8;
+	repeated uint32 tower_buff_id_list = 7;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "ForwardType.proto";
+import "EvtBeingHitInfo.proto";
+
+message EvtBeingHitNotify {
+	enum CmdId {
+		option allow_alias = true;
+		NONE = 0;
+		ENET_CHANNEL_ID = 0;
+		ENET_IS_RELIABLE = 1;
+		IS_ALLOW_CLIENT = 1;
+		CMD_ID = 309;
+	}
+
+	ForwardType forward_type = 13;
+	EvtBeingHitInfo being_hit_info = 7;
+}

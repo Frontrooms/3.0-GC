@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+// CmdId: 945
+// EnetChannelId: 0
+// EnetIsReliable: true
+message DungeonDataNotify {
+	map<uint32, uint32> dungeon_data_map = 6;
+}

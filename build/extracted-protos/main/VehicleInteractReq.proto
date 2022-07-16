@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "VehicleInteractType.proto";
+
+message VehicleInteractReq {
+	enum CmdId {
+		option allow_alias = true;
+		NONE = 0;
+		ENET_CHANNEL_ID = 0;
+		ENET_IS_RELIABLE = 1;
+		IS_ALLOW_CLIENT = 1;
+		CMD_ID = 838;
+	}
+
+	uint32 entity_id = 8;
+	VehicleInteractType interact_type = 3;
+	uint32 pos = 10;
+}
