@@ -6,7 +6,7 @@
 
 2: Download the resources from here: https://github.com/lassedds/3.0-Resources
 
-3: Place the resources within the 3.0 GC Folder.
+3: Place the resources within the 3.0 GC Folder // Remember to change the name to "resources" just like that.
 
 4: Right click the start_config.cmd file and click **Edit**. Next, you have to find the "*bin*" folder of your installed java version. It should be at **`C:\Program Files\Java\`**, in there you open the folder called "*jdk-17.x.x.x*". From open the "*bin*" folder and copy that file path. It should look like something like this: **`C:\Program Files\Java\jdk-17.x.x.x\bin\`**.  Then put that into your *start_config.cmd* file as the variable "*JAVA_PATH=*".
 
