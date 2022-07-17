@@ -1,5 +1,9 @@
 # 3.0-GC
 
+You will need to download these 2 before you start
+https://www.oracle.com/java/technologies/javase/17-0-3-relnotes.html
+https://www.mongodb.com/try/download/compass
+
 ## Server setup
 
 1: Go to https://github.com/lassedds/3.0-GC/releases/tag/Release and download the GC3.0 Release.
