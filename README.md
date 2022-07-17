@@ -16,7 +16,7 @@ https://www.mongodb.com/try/download/compass
 
 5: Done you can now just use the *start.bat* file to open the server.
 
-6: You will now want to go into your 3.0 Genshin folder and put <a href=https://drive.google.com/file/d/1esXUB4Q_Y_wDjvqnNbN8jiQUKsO11N1S/view?usp=sharing>this</a> file in both of these locations:<br>
+6: You will now want to go into your 3.0 Genshin folder and put <a href= https://drive.google.com/file/d/1esXUB4Q_Y_wDjvqnNbN8jiQUKsO11N1S/view?usp=sharing>this</a> file in both of these locations:<br>
 	1. "*YOURGENSHINFOLDER/GenshinImpact_Data/Managed/Metadata*"<br>
 	2. "*YOURGENSHINFOLDER/GenshinImpact_Data/Native/Data/Metadata*"
 
