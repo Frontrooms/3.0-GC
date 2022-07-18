@@ -186,9 +186,9 @@ public class GameSession implements GameSessionManager.KcpChannel {
 
 	@Override
 	public void handleReceive(byte[] bytes) {
-        // Decrypt and turn back into a packet
-        Crypto.xor(bytes, useSecretKey() ? Crypto.ENCRYPT_KEY : Crypto.DISPATCH_KEY);
-        ByteBuf packet = Unpooled.wrappedBuffer(bytes);
+		// Decrypt and turn back into a packet
+		Crypto.xor(bytes, useSecretKey() ? Crypto.ENCRYPT_KEY : Crypto.DISPATCH_KEY);
+		ByteBuf packet = Unpooled.wrappedBuffer(bytes);
 
 		// Log
 		//logPacket(packet);

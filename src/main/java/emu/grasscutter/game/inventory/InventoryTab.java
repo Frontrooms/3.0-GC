@@ -1,13 +1,13 @@
 package emu.grasscutter.game.inventory;
 
 public interface InventoryTab {
-    GameItem getItemById(int id);
-
-    void onAddItem(GameItem item);
-
-    void onRemoveItem(GameItem item);
-
-    int getSize();
-
-    int getMaxCapacity();
+	public GameItem getItemById(int id);
+	
+	public void onAddItem(GameItem item);
+	
+	public void onRemoveItem(GameItem item);
+	
+	public int getSize();
+	
+	public int getMaxCapacity();
 }

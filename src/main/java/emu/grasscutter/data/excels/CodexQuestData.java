@@ -13,28 +13,28 @@ public class CodexQuestData extends GameResource {
     private boolean isDisuse;
 
     public int getParentQuestId() {
-        return this.parentQuestId;
+        return parentQuestId;
     }
 
     public int getId() {
-        return this.Id;
+        return Id;
     }
 
     public int getChapterId() {
-        return this.chapterId;
+        return chapterId;
     }
 
     public int getSortOrder() {
-        return this.sortOrder;
+        return sortOrder;
     }
 
     public boolean getIsDisuse() {
-        return this.isDisuse;
+        return isDisuse;
     }
 
     @Override
     public void onLoad() {
-        if (!this.getIsDisuse()) {
+        if(!this.getIsDisuse()) {
             GameData.getCodexQuestDataIdMap().put(this.getParentQuestId(), this);
         }
     }

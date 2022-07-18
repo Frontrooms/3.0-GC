@@ -4,11 +4,10 @@ import java.util.List;
 
 public class ExpeditionRewardDataList {
     public int getHourTime() {
-        return this.hourTime;
+        return hourTime;
     }
-
     public List<ExpeditionRewardData> getExpeditionRewardData() {
-        return this.expeditionRewardData;
+        return expeditionRewardData;
     }
 
     private int hourTime;

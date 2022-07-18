@@ -11,15 +11,15 @@ public class CodexWeaponData extends GameResource {
     private int sortOrder;
 
     public int getSortOrder() {
-        return this.sortOrder;
+        return sortOrder;
     }
 
     public int getWeaponId() {
-        return this.weaponId;
+        return weaponId;
     }
 
     public int getId() {
-        return this.Id;
+        return Id;
     }
 
     @Override

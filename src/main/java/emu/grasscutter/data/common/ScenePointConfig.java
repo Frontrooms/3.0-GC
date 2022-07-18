@@ -6,10 +6,10 @@ public class ScenePointConfig {
     public JsonObject points;
 
     public JsonObject getPoints() {
-        return this.points;
+        return points;
     }
 
     public void setPoints(JsonObject Points) {
-        this.points = Points;
+        points = Points;
     }
 }

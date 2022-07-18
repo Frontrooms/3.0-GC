@@ -17,44 +17,44 @@ public class CodexReliquaryData extends GameResource {
     private int sortOrder;
 
     public int getSortOrder() {
-        return this.sortOrder;
+        return sortOrder;
     }
 
     public int getId() {
-        return this.Id;
+        return Id;
     }
 
     public int getSuitId() {
-        return this.suitId;
+        return suitId;
     }
 
     public int getLevel() {
-        return this.level;
+        return level;
     }
 
     public int getCupId() {
-        return this.cupId;
+        return cupId;
     }
 
     public int getLeatherId() {
-        return this.leatherId;
+        return leatherId;
     }
 
     public int getCapId() {
-        return this.capId;
+        return capId;
     }
 
     public int getFlowerId() {
-        return this.flowerId;
+        return flowerId;
     }
 
     public int getSandId() {
-        return this.sandId;
+        return sandId;
     }
 
     @Override
     public void onLoad() {
         GameData.getcodexReliquaryArrayList().add(this);
-        GameData.getcodexReliquaryIdMap().put(this.getSuitId(), this);
+        GameData.getcodexReliquaryIdMap().put(getSuitId(), this);
     }
 }

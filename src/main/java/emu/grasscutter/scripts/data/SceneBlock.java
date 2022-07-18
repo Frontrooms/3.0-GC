@@ -21,23 +21,23 @@ import static emu.grasscutter.Configuration.SCRIPT;
 @ToString
 @Setter
 public class SceneBlock {
-    public int id;
-    public Position max;
-    public Position min;
+	public int id;
+	public Position max;
+	public Position min;
 
-    public int sceneId;
-    public Map<Integer, SceneGroup> groups;
-    public RTree<SceneGroup, Geometry> sceneGroupIndex;
+	public int sceneId;
+	public Map<Integer,SceneGroup> groups;
+	public RTree<SceneGroup, Geometry> sceneGroupIndex;
 
-    private transient boolean loaded; // Not an actual variable in the scripts either
+	private transient boolean loaded; // Not an actual variable in the scripts either
 
 	public boolean isLoaded() {
 		return this.loaded;
 	}
 
-    public void setLoaded(boolean loaded) {
-        this.loaded = loaded;
-    }
+	public void setLoaded(boolean loaded) {
+		this.loaded = loaded;
+	}
 
 	public boolean contains(Position pos) {
 		return 	pos.getX() <= this.max.getX() && pos.getX() >= this.min.getX() &&
@@ -54,13 +54,13 @@ public class SceneBlock {
 		CompiledScript cs = ScriptLoader.getScriptByPath(
 				SCRIPT("Scene/" + sceneId + "/scene" + sceneId + "_block" + this.id + "." + ScriptLoader.getScriptType()));
 
-        if (cs == null) {
-            return null;
-        }
+		if (cs == null) {
+			return null;
+		}
 
-        // Eval script
-        try {
-            cs.eval(bindings);
+		// Eval script
+		try {
+			cs.eval(bindings);
 
 			// Set groups
             this.groups = ScriptLoader.getSerializer().toList(SceneGroup.class, bindings.get("groups")).stream()

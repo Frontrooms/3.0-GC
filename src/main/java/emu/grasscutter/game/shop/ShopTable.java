@@ -8,7 +8,7 @@ public class ShopTable {
     private List<ShopInfo> items = new ArrayList<>();
 
     public int getShopId() {
-        return this.shopId;
+        return shopId;
     }
 
     public void setShopId(int shopId) {
@@ -16,7 +16,7 @@ public class ShopTable {
     }
 
     public List<ShopInfo> getItems() {
-        return this.items;
+        return items;
     }
 
     public void setItems(List<ShopInfo> items) {

@@ -1,5 +1,6 @@
 package emu.grasscutter.command.commands;
 
+import emu.grasscutter.Grasscutter;
 import emu.grasscutter.command.Command;
 import emu.grasscutter.command.CommandHandler;
 import emu.grasscutter.game.player.Player;
@@ -18,7 +19,7 @@ public final class TeleportAllCommand implements CommandHandler {
             CommandHandler.sendMessage(sender, translate(sender, "commands.teleportAll.error"));
             return;
         }
-
+        
         for (Player player : targetPlayer.getWorld().getPlayers()) {
             if (player.equals(targetPlayer))
                 continue;
@@ -26,7 +27,7 @@ public final class TeleportAllCommand implements CommandHandler {
 
             player.getWorld().transferPlayerToScene(player, targetPlayer.getSceneId(), pos);
         }
-
+        
         CommandHandler.sendMessage(sender, translate(sender, "commands.teleportAll.success"));
     }
 }

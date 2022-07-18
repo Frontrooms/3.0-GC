@@ -28,12 +28,12 @@ public class HandlerWidgetDoBagReq extends PacketHandler {
                 Position pos = new Position(req.getWidgetCreatorInfo().getLocationInfo().getPos());
                 Position rot = new Position(req.getWidgetCreatorInfo().getLocationInfo().getRot());
                 GameEntity entity = new EntityVehicle(
-                    session.getPlayer().getScene(),
-                    session.getPlayer(),
-                    gadgetData.getId(),
-                    0,
-                    pos,
-                    rot
+                        session.getPlayer().getScene(),
+                        session.getPlayer(),
+                        gadgetData.getId(),
+                        0,
+                        pos,
+                        rot
                 );
 
                 session.getPlayer().getScene().addEntity(entity);

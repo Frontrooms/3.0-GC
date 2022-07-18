@@ -6,15 +6,13 @@ public class ExpeditionRewardData {
     private int maxCount;
 
     public int getItemId() {
-        return this.itemId;
+        return itemId;
     }
 
-    public int getMinCount() {
-        return this.minCount;
-    }
+    public int getMinCount() { return minCount; }
 
     public int getMaxCount() {
-        return this.maxCount;
+        return maxCount;
     }
 
 }

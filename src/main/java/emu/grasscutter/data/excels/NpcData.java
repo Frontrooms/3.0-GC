@@ -5,9 +5,9 @@ import emu.grasscutter.data.ResourceType;
 
 @ResourceType(name = "NpcExcelConfigData.json")
 public class NpcData extends GameResource {
-    private int id;
-
-    private String jsonName;
+	private int id;
+	
+	private String jsonName;
     private String alias;
     private String scriptDataPath;
     private String luaDataPath;
@@ -19,54 +19,54 @@ public class NpcData extends GameResource {
 
     private long nameTextMapHash;
     private int campID;
+	    
+	@Override
+	public int getId() {
+		return this.id;
+	}
 
-    @Override
-    public int getId() {
-        return this.id;
-    }
+	public String getJsonName() {
+		return jsonName;
+	}
 
-    public String getJsonName() {
-        return this.jsonName;
-    }
+	public String getAlias() {
+		return alias;
+	}
 
-    public String getAlias() {
-        return this.alias;
-    }
+	public String getScriptDataPath() {
+		return scriptDataPath;
+	}
 
-    public String getScriptDataPath() {
-        return this.scriptDataPath;
-    }
+	public String getLuaDataPath() {
+		return luaDataPath;
+	}
 
-    public String getLuaDataPath() {
-        return this.luaDataPath;
-    }
+	public boolean isIsInteractive() {
+		return isInteractive;
+	}
 
-    public boolean isIsInteractive() {
-        return this.isInteractive;
-    }
+	public boolean isHasMove() {
+		return hasMove;
+	}
 
-    public boolean isHasMove() {
-        return this.hasMove;
-    }
+	public String getDyePart() {
+		return dyePart;
+	}
 
-    public String getDyePart() {
-        return this.dyePart;
-    }
+	public String getBillboardIcon() {
+		return billboardIcon;
+	}
 
-    public String getBillboardIcon() {
-        return this.billboardIcon;
-    }
+	public long getNameTextMapHash() {
+		return nameTextMapHash;
+	}
 
-    public long getNameTextMapHash() {
-        return this.nameTextMapHash;
-    }
+	public int getCampID() {
+		return campID;
+	}
 
-    public int getCampID() {
-        return this.campID;
-    }
+	@Override
+	public void onLoad() {
 
-    @Override
-    public void onLoad() {
-
-    }
+	}
 }

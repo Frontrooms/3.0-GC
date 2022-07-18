@@ -11,41 +11,41 @@ public class TowerScheduleData extends GameResource {
     private List<Integer> entranceFloorId;
     private List<ScheduleDetail> schedules;
     private int monthlyLevelConfigId;
-
+    
     @Override
     public int getId() {
-        return this.scheduleId;
+        return scheduleId;
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
         this.schedules = this.schedules.stream()
-            .filter(item -> item.getFloorList().size() > 0)
-            .toList();
+                .filter(item -> item.getFloorList().size() > 0)
+                .toList();
     }
 
     public int getScheduleId() {
-        return this.scheduleId;
+        return scheduleId;
     }
 
     public List<Integer> getEntranceFloorId() {
-        return this.entranceFloorId;
+        return entranceFloorId;
     }
 
     public List<ScheduleDetail> getSchedules() {
-        return this.schedules;
+        return schedules;
     }
-
+    
     public int getMonthlyLevelConfigId() {
-        return this.monthlyLevelConfigId;
+        return monthlyLevelConfigId;
     }
 
-    public static class ScheduleDetail {
+    public static class ScheduleDetail{
         private List<Integer> floorList;
 
         public List<Integer> getFloorList() {
-            return this.floorList;
+            return floorList;
         }
     }
 }

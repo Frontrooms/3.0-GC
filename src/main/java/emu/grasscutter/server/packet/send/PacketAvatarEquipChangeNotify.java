@@ -8,32 +8,32 @@ import emu.grasscutter.net.packet.PacketOpcodes;
 import emu.grasscutter.net.proto.AvatarEquipChangeNotifyOuterClass.AvatarEquipChangeNotify;
 
 public class PacketAvatarEquipChangeNotify extends BasePacket {
+	
+	public PacketAvatarEquipChangeNotify(Avatar avatar, GameItem item) {
+		super(PacketOpcodes.AvatarEquipChangeNotify);
 
-    public PacketAvatarEquipChangeNotify(Avatar avatar, GameItem item) {
-        super(PacketOpcodes.AvatarEquipChangeNotify);
+		AvatarEquipChangeNotify.Builder proto = AvatarEquipChangeNotify.newBuilder()
+				.setAvatarGuid(avatar.getGuid())
+				.setEquipType(item.getEquipSlot())
+				.setItemId(item.getItemId())
+				.setEquipGuid(item.getGuid());
+		
+		if (item.getItemData().getEquipType() == EquipType.EQUIP_WEAPON) {
+			proto.setWeapon(item.createSceneWeaponInfo());
+		} else {
+			proto.setReliquary(item.createSceneReliquaryInfo());
+		}
 
-        AvatarEquipChangeNotify.Builder proto = AvatarEquipChangeNotify.newBuilder()
-            .setAvatarGuid(avatar.getGuid())
-            .setEquipType(item.getEquipSlot())
-            .setItemId(item.getItemId())
-            .setEquipGuid(item.getGuid());
+		this.setData(proto);
+	}
+	
+	public PacketAvatarEquipChangeNotify(Avatar avatar, EquipType slot) {
+		super(PacketOpcodes.AvatarEquipChangeNotify);
 
-        if (item.getItemData().getEquipType() == EquipType.EQUIP_WEAPON) {
-            proto.setWeapon(item.createSceneWeaponInfo());
-        } else {
-            proto.setReliquary(item.createSceneReliquaryInfo());
-        }
+		AvatarEquipChangeNotify.Builder proto = AvatarEquipChangeNotify.newBuilder()
+				.setAvatarGuid(avatar.getGuid())
+				.setEquipType(slot.getValue());
 
-        this.setData(proto);
-    }
-
-    public PacketAvatarEquipChangeNotify(Avatar avatar, EquipType slot) {
-        super(PacketOpcodes.AvatarEquipChangeNotify);
-
-        AvatarEquipChangeNotify.Builder proto = AvatarEquipChangeNotify.newBuilder()
-            .setAvatarGuid(avatar.getGuid())
-            .setEquipType(slot.getValue());
-
-        this.setData(proto);
-    }
+		this.setData(proto);
+	}
 }

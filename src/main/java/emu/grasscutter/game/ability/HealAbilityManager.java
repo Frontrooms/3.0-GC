@@ -1,15 +1,36 @@
 package emu.grasscutter.game.ability;
 
+import java.util.*;
+import java.util.Optional;
+import java.util.Map.Entry;
+
+import com.google.protobuf.InvalidProtocolBufferException;
+
+import emu.grasscutter.Grasscutter;
+
+import emu.grasscutter.data.GameData;
+import emu.grasscutter.data.binout.AbilityModifierEntry;
+import emu.grasscutter.data.binout.AbilityModifier.AbilityModifierAction;
+import emu.grasscutter.data.excels.AvatarSkillDepotData;
+import emu.grasscutter.data.excels.ItemData;
+import emu.grasscutter.game.avatar.Avatar;
 import emu.grasscutter.game.entity.EntityAvatar;
+import emu.grasscutter.game.entity.EntityClientGadget;
+import emu.grasscutter.game.entity.EntityItem;
 import emu.grasscutter.game.entity.GameEntity;
 import emu.grasscutter.game.player.Player;
-import emu.grasscutter.game.props.FightProperty;
+import emu.grasscutter.game.props.ElementType;
+import emu.grasscutter.net.proto.AbilityActionGenerateElemBallOuterClass.AbilityActionGenerateElemBall;
+import emu.grasscutter.net.proto.AbilityInvokeEntryHeadOuterClass.AbilityInvokeEntryHead;
 import emu.grasscutter.net.proto.AbilityInvokeEntryOuterClass.AbilityInvokeEntry;
 import emu.grasscutter.net.proto.AbilityMetaModifierChangeOuterClass.AbilityMetaModifierChange;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import emu.grasscutter.net.proto.AbilityMetaReInitOverrideMapOuterClass.AbilityMetaReInitOverrideMap;
+import emu.grasscutter.net.proto.AbilityMixinCostStaminaOuterClass.AbilityMixinCostStamina;
+import emu.grasscutter.net.proto.AbilityScalarValueEntryOuterClass.AbilityScalarValueEntry;
+import emu.grasscutter.net.proto.ModifierActionOuterClass.ModifierAction;
+import emu.grasscutter.utils.Position;
+import emu.grasscutter.utils.Utils;
+import emu.grasscutter.game.props.FightProperty;
 
 public class HealAbilityManager {
     private class HealData {
@@ -20,47 +41,47 @@ public class HealAbilityManager {
         public float fRatio = 0;
         public float fBase = 0;
         public boolean healAll = false;
-
+        
         public HealData(String _abilityType, String _sRatio, String _sBase, boolean _healAll) {
-            this.abilityType = _abilityType;
-            this.isString = true;
-            this.sRatio = _sRatio;
-            this.sBase = _sBase;
-            this.healAll = _healAll;
+            abilityType = _abilityType;
+            isString = true;
+            sRatio = _sRatio;
+            sBase = _sBase;
+            healAll = _healAll;
         }
 
         public HealData(String _abilityType, String _sRatio, float _fRatio, float _fBase, boolean _healAll) {
-            this.abilityType = _abilityType;
-            this.isString = false;
-            this.sRatio = _sRatio;
-            this.fRatio = _fRatio;
-            this.fBase = _fBase;
-            this.healAll = _healAll;
+            abilityType = _abilityType;
+            isString = false;
+            sRatio = _sRatio;
+            fRatio = _fRatio;
+            fBase = _fBase;
+            healAll = _healAll;
         }
     }
 
     private class HealDataAvatar {
         public int avatarId = 0;
         public String avatarName = "";
-        public int fightPropertyType = 0; //0: maxHP, 1: curAttack, 2: curDefense
+        public int fightPropertyType= 0; //0: maxHP, 1: curAttack, 2: curDefense
         public ArrayList<HealData> healDataList;
 
         public HealDataAvatar(int _avatarId, String _avatarName, int _fightPropertyType) {
-            this.avatarId = _avatarId;
-            this.avatarName = _avatarName;
-            this.fightPropertyType = _fightPropertyType;
-            this.healDataList = new ArrayList();
+            avatarId = _avatarId;
+            avatarName = _avatarName;
+            fightPropertyType = _fightPropertyType;
+            healDataList = new ArrayList();
         }
 
         public HealDataAvatar addHealData(String abilityType, String sRatio, String sBase, boolean healAll) {
             HealData healData = new HealData(abilityType, sRatio, sBase, healAll);
-            this.healDataList.add(healData);
+            healDataList.add(healData);
             return this;
         }
 
         public HealDataAvatar addHealData(String abilityType, String sRatio, float fRatio, float fBase, boolean healAll) {
             HealData healData = new HealData(abilityType, sRatio, fRatio, fBase, healAll);
-            this.healDataList.add(healData);
+            healDataList.add(healData);
             return this;
         }
     }
@@ -83,25 +104,25 @@ public class HealAbilityManager {
         healDataAvatarList.add(new HealDataAvatar(10000046, "Hutao", 0).addHealData("Q", "Avatar_Hutao_VermilionBite_BakeMesh", 0.1166f, 0f, false));
     }
 
-    public Player getPlayer() {
-        return this.player;
-    }
+	public Player getPlayer() {
+		return this.player;
+	}
 
     public void healHandler(AbilityInvokeEntry invoke) throws Exception {
-        AbilityMetaModifierChange data = AbilityMetaModifierChange.parseFrom(invoke.getAbilityData());
-
-        if (data == null) {
-            return;
-        }
-
-        GameEntity sourceEntity = this.player.getScene().getEntityById(data.getApplyEntityId());
+		AbilityMetaModifierChange data = AbilityMetaModifierChange.parseFrom(invoke.getAbilityData());
+		
+		if (data == null) {
+			return;
+		}
+		
+		GameEntity sourceEntity = player.getScene().getEntityById(data.getApplyEntityId());
 
         String modifierString = "";
-        if (data.getParentAbilityName() != null)
-            modifierString = data.getParentAbilityName().getStr();
+        if(data.getParentAbilityName() != null)
+			modifierString = data.getParentAbilityName().getStr();
 
-        if (sourceEntity != null)
-            this.checkAndHeal(sourceEntity, modifierString);
+        if(sourceEntity != null)
+            checkAndHeal(sourceEntity, modifierString);
     }
 
     public void checkAndHeal(GameEntity sourceEntity, String modifierString) {
@@ -111,45 +132,47 @@ public class HealAbilityManager {
         float maxHP, curHP, curAttack, curDefense;
         Map<String, Float> map = sourceEntity.getMetaOverrideMap();
 
-        for (int i = 0; i < this.healDataAvatarList.size(); i++) {
-            HealDataAvatar healDataAvatar = this.healDataAvatarList.get(i);
-            if (modifierString.contains(healDataAvatar.avatarName)) {
+        for(int i = 0 ; i < healDataAvatarList.size() ; i ++) {
+            HealDataAvatar healDataAvatar = healDataAvatarList.get(i);
+            if(modifierString.contains(healDataAvatar.avatarName)) {
                 fightPropertyType = healDataAvatar.fightPropertyType;
                 ArrayList<HealData> healDataList = healDataAvatar.healDataList;
 
-                for (int j = 0; j < healDataList.size(); j++) {
+                for(int j = 0 ; j < healDataList.size(); j++) {
                     HealData healData = healDataList.get(j);
                     if(map.containsKey(healData.sRatio) || modifierString.equals(healData.sRatio)) {
                         if(healData.isString) {
                             ratio = map.get(healData.sRatio);
                             base = map.get(healData.sBase);
-                        } else {
+                        }
+                        else {
                             ratio = healData.fRatio;
                             base = healData.fBase;
                         }
                     }
 
-                    List<EntityAvatar> activeTeam = this.player.getTeamManager().getActiveTeam();
+                    List<EntityAvatar> activeTeam = player.getTeamManager().getActiveTeam();
                     List<EntityAvatar> needHealAvatars = new ArrayList();
-                    int currentIndex = this.player.getTeamManager().getCurrentCharacterIndex();
+                    int currentIndex = player.getTeamManager().getCurrentCharacterIndex();
                     EntityAvatar currentAvatar = activeTeam.get(currentIndex);
-                    if (healData.healAll) {
+                    if(healData.healAll) {
                         needHealAvatars = activeTeam;
-                    } else {
+                    }
+                    else {
                         needHealAvatars.add(currentAvatar);
                     }
 
                     EntityAvatar healActionAvatar = null;
-                    for (int k = 0; k < activeTeam.size(); k++) {
+                    for(int k = 0 ; k < activeTeam.size() ; k ++) {
                         EntityAvatar avatar = activeTeam.get(k);
                         int avatarId = avatar.getAvatar().getAvatarId();
-                        if (avatarId == healDataAvatar.avatarId) {
+                        if(avatarId == healDataAvatar.avatarId) {
                             healActionAvatar = avatar;
                             break;
                         }
                     }
 
-                    if (healActionAvatar != null) {
+                    if(healActionAvatar != null) {
                         maxHP = healActionAvatar.getFightProperty(FightProperty.FIGHT_PROP_MAX_HP);
                         curHP = healActionAvatar.getFightProperty(FightProperty.FIGHT_PROP_CUR_HP);
                         curAttack = healActionAvatar.getFightProperty(FightProperty.FIGHT_PROP_CUR_ATTACK);
@@ -173,7 +196,7 @@ public class HealAbilityManager {
                         }
                     }
 
-                    for (int k = 0; k < needHealAvatars.size(); k++) {
+                    for(int k = 0 ; k < needHealAvatars.size() ; k ++) {
                         EntityAvatar avatar = needHealAvatars.get(k);
                         avatar.heal(healAmount);
                     }

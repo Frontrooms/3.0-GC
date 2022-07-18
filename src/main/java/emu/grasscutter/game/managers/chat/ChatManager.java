@@ -3,7 +3,6 @@ package emu.grasscutter.game.managers.chat;
 import emu.grasscutter.GameConstants;
 import emu.grasscutter.command.CommandMap;
 import emu.grasscutter.game.player.Player;
-import emu.grasscutter.net.packet.BasePacket;
 import emu.grasscutter.net.proto.ChatInfoOuterClass.ChatInfo;
 import emu.grasscutter.server.game.GameServer;
 import emu.grasscutter.server.packet.send.PacketPlayerChatNotify;
@@ -12,12 +11,11 @@ import emu.grasscutter.server.packet.send.PacketPullPrivateChatRsp;
 import emu.grasscutter.server.packet.send.PacketPullRecentChatRsp;
 import emu.grasscutter.utils.Utils;
 
+import java.util.regex.Pattern;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import static emu.grasscutter.Configuration.*;
 
@@ -31,7 +29,7 @@ public class ChatManager implements ChatManagerHandler {
 	private final Map<Integer, Map<Integer, List<ChatInfo>>> history = new HashMap<>();
 
 	private final GameServer server;
-	
+
 	public ChatManager(GameServer server) {
 		this.server = server;
 	}
@@ -81,15 +79,14 @@ public class ChatManager implements ChatManagerHandler {
 		// For now, we send the list three messages from the server for the recent chat history.
 		// This matches the previous behavior, but ultimately, we should probably keep track of the last chat partner
 		// for every given player and return the last messages exchanged with that partner.
-
-		// If there is no history for this user with the server yet, create it by sending the welcome messages.
-		if (!this.history.containsKey(player.getUid()) || !this.history.get(player.getUid()).containsKey(GameConstants.SERVER_CONSOLE_UID)) {
-			this.sendServerWelcomeMessages(player);
+		if (this.history.containsKey(player.getUid()) && this.history.get(player.getUid()).containsKey(GameConstants.SERVER_CONSOLE_UID)) {
+			int historyLength = this.history.get(player.getUid()).get(GameConstants.SERVER_CONSOLE_UID).size();
+			var messages = this.history.get(player.getUid()).get(GameConstants.SERVER_CONSOLE_UID).subList(Math.max(historyLength - 3, 0), historyLength);
+			player.sendPacket(new PacketPullRecentChatRsp(messages));
 		}
-
-		int historyLength = this.history.get(player.getUid()).get(GameConstants.SERVER_CONSOLE_UID).size();
-		var messages = this.history.get(player.getUid()).get(GameConstants.SERVER_CONSOLE_UID).subList(Math.max(historyLength - 3, 0), historyLength);
-		player.sendPacket(new PacketPullRecentChatRsp(messages));
+		else {
+			player.sendPacket(new PacketPullRecentChatRsp(List.of()));
+		}
 	}
 
 	/********************
@@ -138,12 +135,12 @@ public class ChatManager implements ChatManagerHandler {
 		// Get target.
 		Player target = getServer().getPlayerByUid(targetUid);
 
-		if (target == null && targetUid != GameConstants.SERVER_CONSOLE_UID) {
+		// Check if command
+		if (tryInvokeCommand(player, target, message)) {
 			return;
 		}
-				
-		// Check if command.
-		if (tryInvokeCommand(player, target, message)) {
+
+		if (target == null && targetUid != GameConstants.SERVER_CONSOLE_UID) {
 			return;
 		}
 
@@ -159,6 +156,7 @@ public class ChatManager implements ChatManagerHandler {
 			putInHistory(targetUid, player.getUid(), packet.getChatInfo());
 		}
 	}
+
 	public void sendPrivateMessage(Player player, int targetUid, int emote) {
 		// Get target.
 		Player target = getServer().getPlayerByUid(targetUid);
@@ -179,13 +177,13 @@ public class ChatManager implements ChatManagerHandler {
 			putInHistory(targetUid, player.getUid(), packet.getChatInfo());
 		}
 	}
-	
+
 	public void sendTeamMessage(Player player, int channel, String message) {
 		// Sanity checks
 		if (message == null || message.length() == 0) {
 			return;
 		}
-				
+
 		// Check if command
 		if (tryInvokeCommand(player, null, message)) {
 			return;
