@@ -1,8 +1,9 @@
 # 3.0-GC
 
-You will need to download these 2 before you start
+You will need to download these 2 before you start<br>
 https://www.oracle.com/java/technologies/javase/17-0-3-relnotes.html
 https://www.mongodb.com/try/download/compass
+https://www.mongodb.com/try/download/community
 
 ## Server setup
 
