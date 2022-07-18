@@ -1,5 +1,9 @@
 # 3.0-GC
 
+You will need to download these 2 before you start
+https://www.oracle.com/java/technologies/javase/17-0-3-relnotes.html
+https://www.mongodb.com/try/download/compass
+
 ## Server setup
 
 1: Go to https://github.com/lassedds/3.0-GC/releases/tag/Release and download the GC3.0 Release.
@@ -12,7 +16,7 @@
 
 5: Done you can now just use the *start.bat* file to open the server.
 
-6: You will now want to go into your 3.0 Genshin folder and put <a href=https://cdn.discordapp.com/attachments/973630112589307914/996912792672153660/global-metadata.dat>this</a> file in both of these locations:<br>
+6: You will now want to go into your 3.0 Genshin folder and put <a href="https://drive.google.com/file/d/1esXUB4Q_Y_wDjvqnNbN8jiQUKsO11N1S/view?usp=sharing">this</a> file in both of these locations:<br>
 	1. "*YOURGENSHINFOLDER/GenshinImpact_Data/Managed/Metadata*"<br>
 	2. "*YOURGENSHINFOLDER/GenshinImpact_Data/Native/Data/Metadata*"
 
