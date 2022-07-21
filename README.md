@@ -1,8 +1,9 @@
 # 3.0-GC
 
-You will need to download these 2 before you start
-https://www.oracle.com/java/technologies/javase/17-0-3-relnotes.html
-https://www.mongodb.com/try/download/compass
+You will need to download these 2 before you start<br>
+https://download.oracle.com/java/17/archive/jdk-17.0.3.1_windows-x64_bin.exe<br>
+https://www.mongodb.com/try/download/compass<br>
+https://www.mongodb.com/try/download/community<br>
 
 ## Server setup
 
