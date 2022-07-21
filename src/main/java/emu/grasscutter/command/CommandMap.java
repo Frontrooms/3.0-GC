@@ -106,12 +106,7 @@ public final class CommandMap {
      * @return The command handler.
      */
     public CommandHandler getHandler(String label) {
-        CommandHandler handler = this.commands.get(label);
-        if (handler == null) {
-            // Try getting by alias
-            handler = this.aliases.get(label);
-        }
-        return handler;
+        return this.commands.get(label);
     }
 
     private Player getTargetPlayer(String playerId, Player player, Player targetPlayer, List<String> args) {
@@ -134,7 +129,7 @@ public final class CommandMap {
                     }
                     return targetPlayer;
                 } catch (NumberFormatException e) {
-                    CommandHandler.sendTranslatedMessage(player, "commands.generic.invalid.uid");
+                    CommandHandler.sendTranslatedMessage(player, "commands.execution.uid_error");
                     throw new IllegalArgumentException();
                 }
             }
@@ -182,7 +177,7 @@ public final class CommandMap {
             CommandHandler.sendTranslatedMessage(player, targetPlayer.isOnline()? "commands.execution.set_target_online" : "commands.execution.set_target_offline", targetUid);
             return true;
         } catch (NumberFormatException e) {
-            CommandHandler.sendTranslatedMessage(player, "commands.generic.invalid.uid");
+            CommandHandler.sendTranslatedMessage(player, "commands.execution.uid_error");
             return false;
         }
     }
@@ -225,9 +220,12 @@ public final class CommandMap {
         }
 
         // Get command handler.
-        CommandHandler handler = this.getHandler(label);
+        CommandHandler handler = this.commands.get(label);
+        if(handler == null)
+            // Try to get the handler by alias.
+            handler = this.aliases.get(label);
 
-        // Check if the handler is null.
+        // Check if the handler is still null.
         if (handler == null) {
             CommandHandler.sendTranslatedMessage(player, "commands.generic.unknown_command", label);
             return;

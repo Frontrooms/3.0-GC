@@ -572,47 +572,5 @@
                 "chance": 50
             }
         ]
-    },
-	{
-        "avatarId": 10000069,
-        "name": "Tighnari",
-        "amountList": [
-            {
-                "value": 1,
-                "chance": 50
-            },
-            {
-                "value": 2,
-                "chance": 50
-            }
-        ]
-    },
-	{
-        "avatarId": 10000068,
-        "name": "Dori",
-        "amountList": [
-            {
-                "value": 1,
-                "chance": 50
-            },
-            {
-                "value": 2,
-                "chance": 50
-            }
-        ]
-    },
-	{
-        "avatarId": 10000067,
-        "name": "Collei",
-        "amountList": [
-            {
-                "value": 1,
-                "chance": 50
-            },
-            {
-                "value": 2,
-                "chance": 50
-            }
-        ]
     }
 ]

@@ -6,7 +6,6 @@ import emu.grasscutter.game.Account;
 import emu.grasscutter.server.http.objects.ComboTokenResJson;
 import emu.grasscutter.server.http.objects.LoginResultJson;
 
-import static emu.grasscutter.Configuration.ACCOUNT;
 import static emu.grasscutter.utils.Language.translate;
 
 /**
@@ -14,19 +13,11 @@ import static emu.grasscutter.utils.Language.translate;
  * Allows all users to access any account.
  */
 public final class DefaultAuthentication implements AuthenticationSystem {
-    private Authenticator<LoginResultJson> passwordAuthenticator;
-    private Authenticator<LoginResultJson> tokenAuthenticator = new TokenAuthenticator();
-    private Authenticator<ComboTokenResJson> sessionKeyAuthenticator = new SessionKeyAuthenticator();
-    private ExternalAuthenticator externalAuthenticator = new ExternalAuthentication();
-    private OAuthAuthenticator oAuthAuthenticator = new OAuthAuthentication();
-
-    public DefaultAuthentication() {
-        if(ACCOUNT.EXPERIMENTAL_RealPassword) {
-            passwordAuthenticator = new ExperimentalPasswordAuthenticator();
-        } else {
-            passwordAuthenticator = new PasswordAuthenticator();
-        }
-    }
+    private final Authenticator<LoginResultJson> passwordAuthenticator = new PasswordAuthenticator();
+    private final Authenticator<LoginResultJson> tokenAuthenticator = new TokenAuthenticator();
+    private final Authenticator<ComboTokenResJson> sessionKeyAuthenticator = new SessionKeyAuthenticator();
+    private final ExternalAuthenticator externalAuthenticator = new ExternalAuthentication();
+    private final OAuthAuthenticator oAuthAuthenticator = new OAuthAuthentication();
 
     @Override
     public void createAccount(String username, String password) {
@@ -40,7 +31,7 @@ public final class DefaultAuthentication implements AuthenticationSystem {
 
     @Override
     public Account verifyUser(String details) {
-        Grasscutter.getLogger().info(translate("messages.dispatch.authentication.default_unable_to_verify"));
+        Grasscutter.getLogger().info(translate("dispatch.authentication.default_unable_to_verify"));
         return null;
     }
 

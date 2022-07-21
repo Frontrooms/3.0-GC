@@ -1,7 +1,6 @@
 package emu.grasscutter.server.packet.send;
 
 
-import emu.grasscutter.Grasscutter;
 import emu.grasscutter.game.mail.Mail;
 import emu.grasscutter.game.player.Player;
 import emu.grasscutter.net.packet.BasePacket;
@@ -14,7 +13,9 @@ import java.util.List;
 public class PacketMailChangeNotify extends BasePacket {
 
     public PacketMailChangeNotify(Player player, Mail message) {
-        this (player, new ArrayList<Mail>(){{add(message);}});
+        this(player, new ArrayList<Mail>() {{
+            this.add(message);
+        }});
     }
 
     public PacketMailChangeNotify(Player player, List<Mail> mailList) {
@@ -54,13 +55,13 @@ public class PacketMailChangeNotify extends BasePacket {
                 mailData.setImportance(message.importance);
                 mailData.setIsRead(message.isRead);
                 mailData.setIsAttachmentGot(message.isAttachmentGot);
-                mailData.setUnk2700NDPPGJKJOMHValue(message.stateValue);
+                mailData.setBHCAHLJIKFFValue(message.stateValue);
 
                 proto.addMailList(mailData.build());
             }
         }
 
-        if(delMailIdList != null) {
+        if (delMailIdList != null) {
             proto.addAllDelMailIdList(delMailIdList);
         }
 

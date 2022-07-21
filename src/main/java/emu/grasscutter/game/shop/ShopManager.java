@@ -11,7 +11,6 @@ import emu.grasscutter.utils.Utils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -19,46 +18,49 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import static emu.grasscutter.Configuration.*;
+import static emu.grasscutter.Configuration.GAME_OPTIONS;
 
 public class ShopManager {
-	private final GameServer server;
+    private final GameServer server;
 
-	public Int2ObjectMap<List<ShopInfo>> getShopData() {
-		return shopData;
-	}
+    public Int2ObjectMap<List<ShopInfo>> getShopData() {
+        return this.shopData;
+    }
 
-	public List<ShopChestTable> getShopChestData() {
-		return shopChestData;
-	}
+    public List<ShopChestTable> getShopChestData() {
+        return this.shopChestData;
+    }
 
-	public List<ShopChestBatchUseTable> getShopChestBatchUseData() {
-		return shopChestBatchUseData;
-	}
+    public List<ShopChestBatchUseTable> getShopChestBatchUseData() {
+        return this.shopChestBatchUseData;
+    }
 
-	private final Int2ObjectMap<List<ShopInfo>> shopData;
-	private final List<ShopChestTable> shopChestData;
-	private final List<ShopChestBatchUseTable> shopChestBatchUseData;
+    private final Int2ObjectMap<List<ShopInfo>> shopData;
+    private final List<ShopChestTable> shopChestData;
+    private final List<ShopChestBatchUseTable> shopChestBatchUseData;
 
-	public ShopManager(GameServer server) {
-		this.server = server;
-		this.shopData = new Int2ObjectOpenHashMap<>();
-		this.shopChestData = new ArrayList<>();
-		this.shopChestBatchUseData = new ArrayList<>();
-		this.load();
-	}
+    public ShopManager(GameServer server) {
+        this.server = server;
+        this.shopData = new Int2ObjectOpenHashMap<>();
+        this.shopChestData = new ArrayList<>();
+        this.shopChestBatchUseData = new ArrayList<>();
+        this.load();
+    }
 
-	private static final int REFRESH_HOUR = 4; // In GMT+8 server
-	private static final String TIME_ZONE = "Asia/Shanghai"; // GMT+8 Timezone
+    private static final int REFRESH_HOUR = 4; // In GMT+8 server
+    private static final String TIME_ZONE = "Asia/Shanghai"; // GMT+8 Timezone
 
-	public static int getShopNextRefreshTime(ShopInfo shopInfo) {
-		return switch (shopInfo.getShopRefreshType()) {
-			case SHOP_REFRESH_DAILY -> Utils.getNextTimestampOfThisHour(REFRESH_HOUR, TIME_ZONE, shopInfo.getShopRefreshParam());
-			case SHOP_REFRESH_WEEKLY ->  Utils.getNextTimestampOfThisHourInNextWeek(REFRESH_HOUR, TIME_ZONE, shopInfo.getShopRefreshParam());
-			case SHOP_REFRESH_MONTHLY -> Utils.getNextTimestampOfThisHourInNextMonth(REFRESH_HOUR, TIME_ZONE, shopInfo.getShopRefreshParam());
-			default -> 0;
-		};
-	}
+    public static int getShopNextRefreshTime(ShopInfo shopInfo) {
+        return switch (shopInfo.getShopRefreshType()) {
+            case SHOP_REFRESH_DAILY ->
+                Utils.getNextTimestampOfThisHour(REFRESH_HOUR, TIME_ZONE, shopInfo.getShopRefreshParam());
+            case SHOP_REFRESH_WEEKLY ->
+                Utils.getNextTimestampOfThisHourInNextWeek(REFRESH_HOUR, TIME_ZONE, shopInfo.getShopRefreshParam());
+            case SHOP_REFRESH_MONTHLY ->
+                Utils.getNextTimestampOfThisHourInNextMonth(REFRESH_HOUR, TIME_ZONE, shopInfo.getShopRefreshParam());
+            default -> 0;
+        };
+    }
 
 	private void loadShop() {
 		try (Reader fileReader = new InputStreamReader(DataLoader.load("Shop.json"))) {
@@ -89,20 +91,20 @@ public class ShopManager {
 				Grasscutter.getLogger().error("Unable to load shop data. Shop data size is 0.");
 			}
 
-			if (GAME_OPTIONS.enableShopItems) {
-				GameData.getShopGoodsDataEntries().forEach((k, v) -> {
-					if (!getShopData().containsKey(k.intValue()))
-						getShopData().put(k.intValue(), new ArrayList<>());
-					for (ShopGoodsData sgd : v) {
-						var shopInfo = new ShopInfo(sgd);
-						getShopData().get(k.intValue()).add(shopInfo);
-					}
-				});
-			}
-		} catch (Exception e) {
-			Grasscutter.getLogger().error("Unable to load shop data.", e);
-		}
-	}
+            if (GAME_OPTIONS.enableShopItems) {
+                GameData.getShopGoodsDataEntries().forEach((k, v) -> {
+                    if (!this.getShopData().containsKey(k.intValue()))
+                        this.getShopData().put(k.intValue(), new ArrayList<>());
+                    for (ShopGoodsData sgd : v) {
+                        var shopInfo = new ShopInfo(sgd);
+                        this.getShopData().get(k.intValue()).add(shopInfo);
+                    }
+                });
+            }
+        } catch (Exception e) {
+            Grasscutter.getLogger().error("Unable to load shop data.", e);
+        }
+    }
 
 	private void loadShopChest() {
 		try (Reader fileReader = new InputStreamReader(DataLoader.load("ShopChest.json"))) {
@@ -134,13 +136,13 @@ public class ShopManager {
 		}
 	}
 
-	public synchronized void load() {
-		loadShop();
-		loadShopChest();
-		loadShopChestBatchUse();
-	}
+    public synchronized void load() {
+        this.loadShop();
+        this.loadShopChest();
+        this.loadShopChestBatchUse();
+    }
 
-	public GameServer getServer() {
-		return server;
-	}
+    public GameServer getServer() {
+        return this.server;
+    }
 }

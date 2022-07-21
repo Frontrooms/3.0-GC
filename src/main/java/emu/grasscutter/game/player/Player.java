@@ -1052,9 +1052,7 @@ public class Player {
 			this.messageHandler.append(message.toString());
 			return;
 		}
-
-		this.getServer().getChatManager().sendPrivateMessageFromServer(getUid(), message.toString());
-		// this.sendPacket(new PacketPrivateChatNotify(GameConstants.SERVER_CONSOLE_UID, getUid(), message.toString()));
+		this.sendPacket(new PacketPrivateChatNotify(GameConstants.SERVER_CONSOLE_UID, getUid(), message.toString()));
 	}
 
 	/**
@@ -1064,8 +1062,7 @@ public class Player {
 	 * @param message The message to send.
 	 */
 	public void sendMessage(Player sender, Object message) {
-		// this.sendPacket(new PacketPrivateChatNotify(sender.getUid(), this.getUid(), message.toString()));
-		this.getServer().getChatManager().sendPrivateMessage(sender, this.getUid(), message.toString());
+		this.sendPacket(new PacketPrivateChatNotify(sender.getUid(), this.getUid(), message.toString()));
 	}
 
 	// ---------------------MAIL------------------------
@@ -1544,9 +1541,6 @@ public class Player {
 		// First notify packets sent
 		this.setHasSentAvatarDataNotify(true);
 
-		// Send server welcome chat.
-		this.getServer().getChatManager().sendServerWelcomeMessages(this);
-		
 		// Set session state
 		session.setState(SessionState.ACTIVE);
 
@@ -1564,9 +1558,6 @@ public class Player {
 
 	public void onLogout() {
 		try{
-			// Clear chat history.
-			this.getServer().getChatManager().clearHistoryOnLogout(this);
-
 			// stop stamina calculation
 			getStaminaManager().stopSustainedStaminaHandler();
 

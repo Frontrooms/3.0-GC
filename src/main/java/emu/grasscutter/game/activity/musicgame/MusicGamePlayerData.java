@@ -71,7 +71,8 @@ public class MusicGamePlayerData {
                 .setMaxScore(musicGameBeatmap.getMaxScore())
                 .setPosition(musicGameBeatmap.getSavePosition())
                 .setMusicNoteCount(musicGameBeatmap.getMusicNoteCount())
-                .setMusicShareId(musicShareId);
+                .setMusicShareId(musicShareId)
+                ;
         }
 
         public MusicBriefInfoOuterClass.MusicBriefInfo.Builder toOthersBriefProto(){
