@@ -1,4 +1,4 @@
-EN | TR <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README.tr.md"></a> |
+EN | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README.tr.md">TR<a> |
 
 # 3.0-GC
 
