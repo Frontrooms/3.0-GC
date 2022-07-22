@@ -1,3 +1,5 @@
+EN | [TR] <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README.tr.md"></a> |
+
 # 3.0-GC
 
 You will need to download these 2 before you start<br>
