@@ -35,7 +35,7 @@ public record InsectCaptureManager(Player player) {
             EnvAnimalGatherConfigData.GatherItem gatherItem = gather.gatherItem();
             ItemData data = GameData.getItemDataMap().get(gatherItem.getId());
             GameItem item = new GameItem(data, gatherItem.getCount());
-            this.player.getInventory().addItem(item, ActionReason.SubfieldDrop);
+            player.getInventory().addItem(item, ActionReason.SubfieldDrop);
             entity.getScene().removeEntity(entity, VisionTypeOuterClass.VisionType.VISION_TYPE_REMOVE);
         } else {
             Grasscutter.getLogger().warn("monster/gather(id={}) has a wrong type.", thingId);

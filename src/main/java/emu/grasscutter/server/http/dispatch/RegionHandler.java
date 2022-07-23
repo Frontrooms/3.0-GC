@@ -11,7 +11,6 @@ import emu.grasscutter.server.event.dispatch.QueryCurrentRegionEvent;
 import emu.grasscutter.server.http.Router;
 import emu.grasscutter.server.http.objects.QueryCurRegionRspJson;
 import emu.grasscutter.utils.Crypto;
-import emu.grasscutter.utils.FileUtils;
 import emu.grasscutter.utils.Utils;
 import express.Express;
 import express.http.Request;
@@ -20,11 +19,6 @@ import io.javalin.Javalin;
 
 import javax.crypto.Cipher;
 import java.io.ByteArrayOutputStream;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.security.Signature;
@@ -143,10 +137,23 @@ public final class RegionHandler implements Router {
 
         if( versionName.contains("2.7.5") || versionName.contains("2.8.")) {
             try {
-                Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-                cipher.init(Cipher.ENCRYPT_MODE, versionName.contains("OSCB") ? Crypto.CUR_OSCB_ENCRYPT_KEY : Crypto.CUR_OSCN_ENCRYPT_KEY);
-
                 QueryCurrentRegionEvent event = new QueryCurrentRegionEvent(regionData); event.call();
+
+                if (GAME_OPTIONS.uaPatchCompatible) {
+                    // More love for UA Patch players
+
+                    var rsp = new QueryCurRegionRspJson();
+
+                    rsp.content = event.getRegionInfo();
+                    rsp.sign = "TW9yZSBsb3ZlIGZvciBVQSBQYXRjaCBwbGF5ZXJz";
+
+                    response.send(rsp);
+                    return;
+                }
+
+                String key_id = request.query("key_id");
+                Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+                cipher.init(Cipher.ENCRYPT_MODE, key_id.equals("3") ? Crypto.CUR_OS_ENCRYPT_KEY : Crypto.CUR_CN_ENCRYPT_KEY);
                 var regionInfo = Utils.base64Decode(event.getRegionInfo());
 
                 //Encrypt regionInfo in chunks

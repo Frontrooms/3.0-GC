@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+import "CityReputationInfo.proto";
+
+message GetCityReputationInfoRsp{
+	int32 retcode = 10;
+	uint32 cityId = 5;
+	CityReputationInfo cityReputationInfo = 8;
+}

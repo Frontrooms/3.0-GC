@@ -32,10 +32,10 @@ public class SceneMeta {
         return new SceneMeta().load(sceneId);
     }
 
-    public SceneMeta load(int sceneId) {
+    public SceneMeta load(int sceneId){
         // Get compiled script if cached
         CompiledScript cs = ScriptLoader.getScriptByPath(
-            SCRIPT("Scene/" + sceneId + "/scene" + sceneId + "." + ScriptLoader.getScriptType()));
+                SCRIPT("Scene/" + sceneId + "/scene" + sceneId + "." + ScriptLoader.getScriptType()));
 
         if (cs == null) {
             Grasscutter.getLogger().warn("No script found for scene " + sceneId);

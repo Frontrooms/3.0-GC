@@ -6,35 +6,35 @@ import emu.grasscutter.data.ResourceType.LoadPriority;
 
 @ResourceType(name = "MonsterDescribeExcelConfigData.json", loadPriority = LoadPriority.HIGH)
 public class MonsterDescribeData extends GameResource {
-    private int id;
+	private int id;
     private long nameTextMapHash;
     private int titleID;
     private int specialNameLabID;
     private String icon;
+	
+	@Override
+	public int getId() {
+		return id;
+	}
 
-    @Override
-    public int getId() {
-        return this.id;
-    }
+	public long getNameTextMapHash() {
+		return nameTextMapHash;
+	}
 
-    public long getNameTextMapHash() {
-        return this.nameTextMapHash;
-    }
+	public int getTitleID() {
+		return titleID;
+	}
 
-    public int getTitleID() {
-        return this.titleID;
-    }
+	public int getSpecialNameLabID() {
+		return specialNameLabID;
+	}
 
-    public int getSpecialNameLabID() {
-        return this.specialNameLabID;
-    }
+	public String getIcon() {
+		return icon;
+	}
 
-    public String getIcon() {
-        return this.icon;
-    }
+	@Override
+	public void onLoad() {
 
-    @Override
-    public void onLoad() {
-
-    }
+	}
 }

@@ -6,7 +6,7 @@ import dev.morphia.annotations.Entity;
 public class ExpeditionInfo {
 
     public int getState() {
-        return this.state;
+        return state;
     }
 
     public void setState(int state) {
@@ -14,7 +14,7 @@ public class ExpeditionInfo {
     }
 
     public int getExpId() {
-        return this.expId;
+        return expId;
     }
 
     public void setExpId(int expId) {
@@ -22,7 +22,7 @@ public class ExpeditionInfo {
     }
 
     public int getHourTime() {
-        return this.hourTime;
+        return hourTime;
     }
 
     public void setHourTime(int hourTime) {
@@ -30,7 +30,7 @@ public class ExpeditionInfo {
     }
 
     public int getStartTime() {
-        return this.startTime;
+        return startTime;
     }
 
     public void setStartTime(int startTime) {

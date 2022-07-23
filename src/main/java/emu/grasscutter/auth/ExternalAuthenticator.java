@@ -9,14 +9,12 @@ public interface ExternalAuthenticator {
 
     /**
      * Called when an external login request is made.
-     *
      * @param request The authentication request.
      */
     void handleLogin(AuthenticationRequest request);
 
     /**
      * Called when an external account creation request is made.
-     *
      * @param request The authentication request.
      *
      * For developers: Use AuthenticationRequest#getRequest() to get the request body.
@@ -26,7 +24,6 @@ public interface ExternalAuthenticator {
 
     /**
      * Called when an external password reset request is made.
-     *
      * @param request The authentication request.
      *
      * For developers: Use AuthenticationRequest#getRequest() to get the request body.

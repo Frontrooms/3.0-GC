@@ -1,40 +1,108 @@
-EN | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README.tr.md">TR</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_FR.md">FR</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_JP.md">JP</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_IT.md">IT</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_pl.md">PL</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_zh.md">CN</a> |
+![Grasscutter](https://socialify.git.ci/Grasscutters/Grasscutter/image?description=1&forks=1&issues=1&language=1&logo=https%3A%2F%2Fs2.loli.net%2F2022%2F04%2F25%2FxOiJn7lCdcT5Mw1.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
+<div align="center"><img alt="Documentation" src="https://img.shields.io/badge/Wiki-Grasscutter-blue?style=for-the-badge&link=https://github.com/Grasscutters/Grasscutter/wiki&link=https://github.com/Grasscutters/Grasscutter/wiki"> <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Grasscutters/Grasscutter?logo=java&style=for-the-badge"> <img alt="GitHub" src="https://img.shields.io/github/license/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Grasscutters/Grasscutter/Build?logo=github&style=for-the-badge"></div>
 
-# 3.0-GC
+<div align="center"><a href="https://discord.gg/T5vZU6UyeG"><img alt="Discord - Grasscutter" src="https://img.shields.io/discord/965284035985305680?label=Discord&logo=discord&style=for-the-badge"></a></div>
 
-You will need to download these 2 before you start<br>
-https://download.oracle.com/java/17/archive/jdk-17.0.3.1_windows-x64_bin.exe<br>
-https://www.mongodb.com/try/download/compass<br>
-https://www.mongodb.com/try/download/community<br>
+EN | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [FR](README_fr-FR.md) | [ES](README_es-ES.md) | [HE](README_HE.md) | [RU](README_ru-RU.md)
 
-## Server setup
+**Attention:** We always welcome contributors to the project. Before adding your contribution, please carefully read our [Code of Conduct](https://github.com/Grasscutters/Grasscutter/blob/stable/CONTRIBUTING.md).
 
-1: Go to https://github.com/lassedds/3.0-GC/releases/tag/Release and download the GC3.0 Release.
+## Current features
 
-2: Download the resources from here: https://github.com/lassedds/3.0-Resources
+* Logging in
+* Combat
+* Friends list
+* Teleportation
+* Gacha system
+* Co-op *partially* works
+* Spawning monsters via console
+* Inventory features (receiving items/characters, upgrading items/characters, etc)
 
-3: Place the resources within the 3.0 GC Folder // Remember to change the name to "resources" just like that.
+## Quick setup guide
 
-4: Right click the start_config.cmd file and click **Edit**. Next, you have to find the "*bin*" folder of your installed java version. It should be at **`C:\Program Files\Java\`**, in there you open the folder called "*jdk-17.x.x.x*". From open the "*bin*" folder and copy that file path. It should look like something like this: **`C:\Program Files\Java\jdk-17.x.x.x\bin\`**.  Then put that into your *start_config.cmd* file as the variable "*JAVA_PATH=*".
+**Note:** For support please join our [Discord](https://discord.gg/T5vZU6UyeG).
 
-5: Done you can now just use the *start.bat* file to open the server.
+### Requirements
 
-6: You will now want to go into your 3.0 Genshin folder and put <a href="https://drive.google.com/file/d/1esXUB4Q_Y_wDjvqnNbN8jiQUKsO11N1S/view?usp=sharing">this</a> file in both of these locations:<br>
-	1. "*YOURGENSHINFOLDER/GenshinImpact_Data/Managed/Metadata*"<br>
-	2. "*YOURGENSHINFOLDER/GenshinImpact_Data/Native/Data/Metadata*"
+* Java SE - 17 ([link](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html))
 
-## Fiddler Guide
+  **Note:** If you just want to **run it**, then **jre** only is fine.
 
-1: Download Fiddler classic <a href=https://www.telerik.com/download/fiddler>here</a>.
+* [MongoDB](https://www.mongodb.com/try/download/community) (recommended 4.0+)
 
-2: Once you have opened Fiddler Classic, go to the **Tools** option at the top of Fiddler and click **Options**.
+* Proxy daemon: mitmproxy (mitmdump, recommended), Fiddler Classic, etc.
 
-3: In the **Options** menu you will see a lot of sub menus. The one we want to go to currently is **HTTPS**. Once you have clicked on **HTTPS**, click on the little box next to the text saying "*Decrypt HTTPS traffic*".
+### Running
 
-4: After the 3rd step, you do not close the options menu but go to the **Connections** submenu. Once you are in the **Connections** submenu, you will see a text saying "*Fiddler Classiclistens onport*". By default, the port will be '8888'. You will want to **change** that to anything else, I use 8080.
+**Note:** If you updated from an older version, delete `config.json` to regenerate it.
 
-5: You can now click **OK** in the Options menu and will want to find the **FiddlerScript** button. Once you have clicked on that, you will want to get this script <a href=https://github.lunatic.moe/fiddlerscript>here</a>. Now copy the script and go back into Fiddler. Replace the existing script with the one you just copied and then press the **Save Script** button.
+1. Get `grasscutter.jar`
+   - Download from [actions](https://github.com/Grasscutters/Grasscutter/suites/6895963598/artifacts/267483297)
+   - [Build by yourself](#Building)
+2. Create a `resources` folder in the directory where grasscutter.jar is located and move your `BinOutput` and `ExcelBinOutput` folders there *(Check the [wiki](https://github.com/Grasscutters/Grasscutter/wiki) for more details how to get those.)*
+3. Run Grasscutter with `java -jar grasscutter.jar`. **Make sure mongodb service is running as well.**
 
-6: Now you can launch the game but you are still not done. Once you try and login, you will get some popup menus in Fiddler and just confirm to all of them.
+### Connecting with the client
 
-7: Success! You should now have Fiddler set up. Good job! If you have any questions, join our <a href=https://discord.gg/AYtB7Q2er8>Discord</a>
+½. Create an account using [server console command](https://github.com/Grasscutters/Grasscutter/wiki/Commands#targeting).
+
+1. Redirect traffic: (choose one)
+    - mitmdump: `mitmdump -s proxy.py -k`
+    
+      Trust CA certificate:
+    
+      ​	**Note:**The CA certificate is usually stored in `%USERPROFILE%\ .mitmproxy`, or you can download it from `http://mitm.it`
+    
+      ​	Double click for [install](https://docs.microsoft.com/en-us/skype-sdk/sdn/articles/installing-the-trusted-root-certificate#installing-a-trusted-root-certificate) or ...
+    
+      - Via command line
+    
+        ```shell
+        certutil -addstore root %USERPROFILE%\.mitmproxy\mitmproxy-ca-cert.cer
+        ```
+    
+    - Fiddler Classic: Run Fiddler Classic, turn on `Decrypt https traffic` in setting and change the default port there (Tools -> Options -> Connections) to anything other than `8888`, and load [this script](https://github.lunatic.moe/fiddlerscript).
+      
+    - [Hosts file](https://github.com/Melledy/Grasscutter/wiki/Running#traffic-route-map)
+    
+2. Set network proxy to `127.0.0.1:8080` or the proxy port you specified.
+
+**you can also use `start.cmd` to start servers and proxy daemons automatically, but you have to set up JAVA_HOME enviroment**
+
+### Building
+
+Grasscutter uses Gradle to handle dependencies & building.
+
+**Requirements:**
+
+- [Java SE Development Kits - 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+- [Git](https://git-scm.com/downloads)
+
+##### Windows
+
+```shell
+git clone https://github.com/Grasscutters/Grasscutter.git
+cd Grasscutter
+.\gradlew.bat # Setting up environments
+.\gradlew jar # Compile
+```
+
+##### Linux
+
+```bash
+git clone https://github.com/Grasscutters/Grasscutter.git
+cd Grasscutter
+chmod +x gradlew
+./gradlew jar # Compile
+```
+
+You can find the output jar in the root of the project folder.
+
+### Commands have moved to the [wiki](https://github.com/Grasscutters/Grasscutter/wiki/Commands)!
+
+# Quick Troubleshooting
+
+* If compiling wasn't successful, please check your JDK installation (JDK 17 and validated JDK's bin PATH variable)
+* My client doesn't connect, doesn't login, 4206, etc... - Mostly your proxy daemon setup is *the issue*, if using
+  Fiddler make sure it running on another port except 8888
+* Startup sequence: MongoDB > Grasscutter > Proxy daemon (mitmdump, fiddler, etc.) > Game

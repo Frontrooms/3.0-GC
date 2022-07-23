@@ -6,13 +6,8 @@ import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
 
 import emu.grasscutter.Grasscutter;
-import emu.grasscutter.net.proto.GetPlayerTokenRspOuterClass.GetPlayerTokenRsp;
-import emu.grasscutter.net.proto.QueryCurrRegionHttpRspOuterClass.QueryCurrRegionHttpRsp;
-
-import static emu.grasscutter.Configuration.*;
 
 public final class Crypto {
 	private static final SecureRandom secureRandom = new SecureRandom();
@@ -24,8 +19,8 @@ public final class Crypto {
 	public static long ENCRYPT_SEED = Long.parseUnsignedLong("11468049314633205968");
 	public static byte[] ENCRYPT_SEED_BUFFER = new byte[0];
 
-    public static PublicKey CUR_OSCB_ENCRYPT_KEY;
-    public static PublicKey CUR_OSCN_ENCRYPT_KEY;
+    public static PublicKey CUR_OS_ENCRYPT_KEY;
+    public static PublicKey CUR_CN_ENCRYPT_KEY;
     public static PrivateKey CUR_SIGNING_KEY;
 
 	public static void loadKeys() {
@@ -40,10 +35,10 @@ public final class Crypto {
             CUR_SIGNING_KEY = KeyFactory.getInstance("RSA")
                 .generatePrivate(new PKCS8EncodedKeySpec(FileUtils.readResource("/keys/SigningKey.der")));
 
-            CUR_OSCB_ENCRYPT_KEY = KeyFactory.getInstance("RSA")
+            CUR_OS_ENCRYPT_KEY = KeyFactory.getInstance("RSA")
                 .generatePublic(new X509EncodedKeySpec(FileUtils.readResource("/keys/OSCB_Pub.der")));
 
-            CUR_OSCN_ENCRYPT_KEY = KeyFactory.getInstance("RSA")
+            CUR_CN_ENCRYPT_KEY = KeyFactory.getInstance("RSA")
                 .generatePublic(new X509EncodedKeySpec(FileUtils.readResource("/keys/OSCN_Pub.der")));
         }
         catch (Exception e) {

@@ -20,7 +20,7 @@ import java.util.List;
 import static emu.grasscutter.Configuration.GAME_OPTIONS;
 import static emu.grasscutter.utils.Language.translate;
 
-@Command(label = "spawn", usage = "spawn <entityId> [amount] [level(monster only)] [<x> <y> <z>(monster only, optional)]", aliases = {"drop"}, permission = "server.spawn", permissionTargeted = "server.spawn.others", description = "commands.spawn.description")
+@Command(label = "spawn", usage = "spawn <entityId> [amount] [level(monster only)] [<x> <y> <z>(monster only, optional)]", permission = "server.spawn", permissionTargeted = "server.spawn.others", description = "commands.spawn.description")
 public final class SpawnCommand implements CommandHandler {
 
     @Override
@@ -91,7 +91,8 @@ public final class SpawnCommand implements CommandHandler {
                 entity = new EntityItem(scene, null, itemData, pos, 1, true);
             }
             if (gadgetData != null) {
-                entity = new EntityVehicle(scene, targetPlayer.getSession().getPlayer(), gadgetData.getId(), 0, pos, targetPlayer.getRotation());  // TODO: does targetPlayer.getSession().getPlayer() have some meaning?
+                pos.addY(-3);
+				entity = new EntityVehicle(scene, targetPlayer.getSession().getPlayer(), gadgetData.getId(), 0, pos, targetPlayer.getRotation());  // TODO: does targetPlayer.getSession().getPlayer() have some meaning?
                 int gadgetId = gadgetData.getId();
                 switch (gadgetId) {
                     // TODO: Not hardcode this. Waverider (skiff)

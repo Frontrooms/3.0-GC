@@ -28,81 +28,81 @@ public class ShopGoodsData extends GameResource {
 
     private String refreshType;
     private transient ShopInfo.ShopRefreshType refreshTypeEnum;
-
+    
     private int refreshParam;
 
     @Override
     public void onLoad() {
-        if (this.refreshType == null)
-            this.refreshTypeEnum = ShopInfo.ShopRefreshType.NONE;
-        else {
-            this.refreshTypeEnum = switch (this.refreshType) {
-                case "SHOP_REFRESH_DAILY" -> ShopInfo.ShopRefreshType.SHOP_REFRESH_DAILY;
-                case "SHOP_REFRESH_WEEKLY" -> ShopInfo.ShopRefreshType.SHOP_REFRESH_WEEKLY;
-                case "SHOP_REFRESH_MONTHLY" -> ShopInfo.ShopRefreshType.SHOP_REFRESH_MONTHLY;
-                default -> ShopInfo.ShopRefreshType.NONE;
-            };
-        }
+       if (this.refreshType == null)
+           this.refreshTypeEnum = ShopInfo.ShopRefreshType.NONE;
+       else {
+           this.refreshTypeEnum = switch (this.refreshType) {
+               case "SHOP_REFRESH_DAILY" -> ShopInfo.ShopRefreshType.SHOP_REFRESH_DAILY;
+               case "SHOP_REFRESH_WEEKLY" -> ShopInfo.ShopRefreshType.SHOP_REFRESH_WEEKLY;
+               case "SHOP_REFRESH_MONTHLY" -> ShopInfo.ShopRefreshType.SHOP_REFRESH_MONTHLY;
+               default -> ShopInfo.ShopRefreshType.NONE;
+           };
+       }
     }
 
     @Override
     public int getId() {
-        return this.getGoodsId();
+        return getGoodsId();
     }
 
     public int getGoodsId() {
-        return this.goodsId;
+        return goodsId;
     }
 
     public int getShopType() {
-        return this.shopType;
+        return shopType;
     }
 
     public int getItemId() {
-        return this.itemId;
+        return itemId;
     }
 
     public int getItemCount() {
-        return this.itemCount;
+        return itemCount;
     }
 
     public int getCostScoin() {
-        return this.costScoin;
+        return costScoin;
     }
 
     public int getCostHcoin() {
-        return this.costHcoin;
+        return costHcoin;
     }
 
     public int getCostMcoin() {
-        return this.costMcoin;
+        return costMcoin;
     }
 
     public List<ItemParamData> getCostItems() {
-        return this.costItems;
+        return costItems;
     }
 
     public int getMinPlayerLevel() {
-        return this.minPlayerLevel;
+        return minPlayerLevel;
     }
 
     public int getMaxPlayerLevel() {
-        return this.maxPlayerLevel;
+        return maxPlayerLevel;
     }
 
     public int getBuyLimit() {
-        return this.buyLimit;
+        return buyLimit;
     }
 
     public int getSubTabId() {
-        return this.subTabId;
+        return subTabId;
     }
 
     public ShopInfo.ShopRefreshType getRefreshType() {
-        return this.refreshTypeEnum;
+        return refreshTypeEnum;
     }
 
     public int getRefreshParam() {
-        return this.refreshParam;
+        return refreshParam;
     }
 }

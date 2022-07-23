@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "emu.grasscutter.net.proto";
+
+message GetCityReputationMapInfoRsp{
+    int32 retcode = 11;
+    repeated uint32 rewardCityList = 9;
+    bool isNewRequest = 6;
+    bool isNewHunting = 3;
+    repeated int32 unlockHuntingCityList = 2;
+}

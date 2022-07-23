@@ -211,6 +211,7 @@ public class ConfigContainer {
             public int cap = 160;
             public int rechargeTime = 480;
         }
+        public boolean uaPatchCompatible = false;
     }
 
     public static class JoinOptions {

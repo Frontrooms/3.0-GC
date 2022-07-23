@@ -13,9 +13,10 @@ import emu.grasscutter.scripts.constants.ScriptGadgetState;
 import emu.grasscutter.server.packet.send.PacketGadgetInteractRsp;
 
 public class GadgetChest extends GadgetContent {
-    public GadgetChest(EntityGadget gadget) {
-        super(gadget);
-    }
+	
+	public GadgetChest(EntityGadget gadget) {
+		super(gadget);
+	}
 
 	public boolean onInteract(Player player, GadgetInteractReq req) {
 		var chestInteractHandlerMap = getGadget().getScene().getWorld().getServer().getWorldDataManager().getChestInteractHandlerMap();
@@ -34,29 +35,30 @@ public class GadgetChest extends GadgetContent {
 				return false;
 			}
 
-            this.getGadget().updateState(ScriptGadgetState.ChestOpened);
-            player.sendPacket(new PacketGadgetInteractRsp(this.getGadget(), InteractTypeOuterClass.InteractType.INTERACT_TYPE_OPEN_CHEST));
-            // let the chest disappear
-            this.getGadget().die();
-            return true;
-        }
-    }
+			getGadget().updateState(ScriptGadgetState.ChestOpened);
+			player.sendPacket(new PacketGadgetInteractRsp(this.getGadget(), InteractTypeOuterClass.InteractType.INTERACT_TYPE_OPEN_CHEST));
+			// let the chest disappear
+			getGadget().die();
+			return true;
+		}
+	}
 
-    public void onBuildProto(SceneGadgetInfo.Builder gadgetInfo) {
-        if (this.getGadget().getMetaGadget() == null) {
-            return;
-        }
+	public void onBuildProto(SceneGadgetInfo.Builder gadgetInfo) {
+		if(getGadget().getMetaGadget() == null){
+			return;
+		}
 
-        var bossChest = this.getGadget().getMetaGadget().boss_chest;
-        if (bossChest != null) {
-            var players = this.getGadget().getScene().getPlayers().stream().map(Player::getUid).toList();
+		var bossChest = getGadget().getMetaGadget().boss_chest;
+		if(bossChest != null){
+			var players = getGadget().getScene().getPlayers().stream().map(Player::getUid).toList();
 
-            gadgetInfo.setBossChest(BossChestInfo.newBuilder()
-                .setMonsterConfigId(bossChest.monster_config_id)
-                .setResin(bossChest.resin)
-                .addAllQualifyUidList(players)
-                .addAllRemainUidList(players)
-                .build());
-        }
-    }
+			gadgetInfo.setBossChest(BossChestInfo.newBuilder()
+					.setMonsterConfigId(bossChest.monster_config_id)
+					.setResin(bossChest.resin)
+					.addAllQualifyUidList(players)
+					.addAllRemainUidList(players)
+					.build());
+		}
+
+	}
 }

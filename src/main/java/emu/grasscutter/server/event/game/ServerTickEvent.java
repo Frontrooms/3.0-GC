@@ -3,8 +3,6 @@ package emu.grasscutter.server.event.game;
 import emu.grasscutter.server.event.types.ServerEvent;
 import java.time.Instant;
 
-import java.time.Instant;
-
 public final class ServerTickEvent extends ServerEvent {
     private final Instant start, end;
 

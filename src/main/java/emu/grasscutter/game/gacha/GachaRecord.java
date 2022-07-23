@@ -1,37 +1,32 @@
 package emu.grasscutter.game.gacha;
 
-import dev.morphia.annotations.Entity;
-import dev.morphia.annotations.Id;
-import dev.morphia.annotations.Indexed;
+import java.util.Date;
+
 import org.bson.types.ObjectId;
 
-import java.util.Date;
+import dev.morphia.annotations.*;
 
 @Entity(value = "gachas", useDiscriminator = false)
 public class GachaRecord {
-    @Id
-    private ObjectId id;
+    @Id private ObjectId id;
+    
+    @Indexed private int ownerId;
 
-    @Indexed
-    private int ownerId;
-
-    private Date transactionDate;
+    private Date transactionDate; 
     private int itemID;
-    @Indexed
-    private int gachaType;
+    @Indexed private int gachaType;
 
-    public GachaRecord() {
-    }
+    public GachaRecord() {}
 
-    public GachaRecord(int itemId, int ownerId, int gachaType) {
+    public GachaRecord(int itemId ,int ownerId, int gachaType){
         this.transactionDate = new Date();
         this.itemID = itemId;
         this.ownerId = ownerId;
         this.gachaType = gachaType;
     }
-
+    
     public int getOwnerId() {
-        return this.ownerId;
+        return ownerId;
     }
 
     public void setOwnerId(int ownerId) {
@@ -39,7 +34,7 @@ public class GachaRecord {
     }
 
     public int getGachaType() {
-        return this.gachaType;
+        return gachaType;
     }
 
     public void setGachaType(int type) {
@@ -47,23 +42,23 @@ public class GachaRecord {
     }
 
     public Date getTransactionDate() {
-        return this.transactionDate;
+        return transactionDate;
     }
-
+    
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
     }
 
     public int getItemID() {
-        return this.itemID;
+        return itemID;
     }
 
     public void setItemID(int itemID) {
         this.itemID = itemID;
     }
 
-    public ObjectId getId() {
-        return this.id;
+    public ObjectId getId(){
+        return id;
     }
 
     public void setId(ObjectId id) {
@@ -71,11 +66,10 @@ public class GachaRecord {
     }
 
     public String toString() {
-        return this.toJsonString();
+        return toJsonString();
     }
-
     public String toJsonString() {
         return "{\"time\": " + this.transactionDate.getTime() + ",\"item\":" + this.itemID + "}";
     }
-
+    
 }

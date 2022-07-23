@@ -80,7 +80,7 @@ public final class SetStatsCommand implements CommandHandler {
         float value;
         try {
             if (valueStr.endsWith("%")) {
-                value = Float.parseFloat(valueStr.substring(0, valueStr.length() - 1)) / 100f;
+                value = Float.parseFloat(valueStr.substring(0, valueStr.length()-1))/100f;
             } else {
                 value = Float.parseFloat(valueStr);
             }
@@ -89,8 +89,8 @@ public final class SetStatsCommand implements CommandHandler {
             return;
         }
 
-        if (this.stats.containsKey(statStr)) {
-            Stat stat = this.stats.get(statStr);
+        if (stats.containsKey(statStr)) {
+            Stat stat = stats.get(statStr);
             entity.setFightProperty(stat.prop, value);
             entity.getWorld().broadcastPacket(new PacketEntityFightPropUpdateNotify(entity, stat.prop));
             if (FightProperty.isPercentage(stat.prop)) {

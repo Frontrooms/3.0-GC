@@ -27,6 +27,7 @@ hs_err_pid*
 .gradle
 
 # Ignore Gradle build output directory
+build/
 out/
 
 # Ignore Gradle properties
@@ -38,6 +39,7 @@ gradle.properties
 .settings
 .metadata
 .properties
+bin/
 tmp/
 *.tmp
 *.bak
@@ -53,6 +55,7 @@ tmp/
 /resources
 /logs
 /plugins
+/data
 /keys
 /language
 /languages

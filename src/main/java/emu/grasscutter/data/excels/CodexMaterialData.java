@@ -11,15 +11,15 @@ public class CodexMaterialData extends GameResource {
     private int sortOrder;
 
     public int getSortOrder() {
-        return this.sortOrder;
+        return sortOrder;
     }
 
     public int getMaterialId() {
-        return this.materialId;
+        return materialId;
     }
 
     public int getId() {
-        return this.Id;
+        return Id;
     }
 
     @Override

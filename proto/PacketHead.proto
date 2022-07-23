@@ -5,5 +5,5 @@ option java_package = "emu.grasscutter.net.proto";
 
 message PacketHead {
 	uint32 client_sequence_id = 3;
-	uint64 timestamp = 6;
+	uint64 sent_ms = 6;
 }

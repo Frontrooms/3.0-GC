@@ -18,27 +18,27 @@ public class TowerLevelRecord {
 
     private int floorStarRewardProgress;
 
-    public TowerLevelRecord setLevelStars(int levelId, int stars) {
-        this.passedLevelMap.put(levelId, stars);
+    public TowerLevelRecord setLevelStars(int levelId, int stars){
+        passedLevelMap.put(levelId, stars);
         return this;
     }
 
     public int getStarCount() {
-        return this.passedLevelMap.values().stream().mapToInt(Integer::intValue).sum();
+        return passedLevelMap.values().stream().mapToInt(Integer::intValue).sum();
     }
 
-    public TowerLevelRecord() {
+    public TowerLevelRecord(){
 
     }
 
-    public TowerLevelRecord(int floorId) {
+    public TowerLevelRecord(int floorId){
         this.floorId = floorId;
         this.passedLevelMap = new HashMap<>();
         this.floorStarRewardProgress = 0;
     }
 
     public int getFloorId() {
-        return this.floorId;
+        return floorId;
     }
 
     public void setFloorId(int floorId) {
@@ -46,7 +46,7 @@ public class TowerLevelRecord {
     }
 
     public Map<Integer, Integer> getPassedLevelMap() {
-        return this.passedLevelMap;
+        return passedLevelMap;
     }
 
     public void setPassedLevelMap(Map<Integer, Integer> passedLevelMap) {
@@ -54,7 +54,7 @@ public class TowerLevelRecord {
     }
 
     public int getFloorStarRewardProgress() {
-        return this.floorStarRewardProgress;
+        return floorStarRewardProgress;
     }
 
     public void setFloorStarRewardProgress(int floorStarRewardProgress) {

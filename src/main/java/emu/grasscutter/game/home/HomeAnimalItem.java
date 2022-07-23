@@ -2,6 +2,7 @@ package emu.grasscutter.game.home;
 
 import dev.morphia.annotations.Entity;
 import emu.grasscutter.net.proto.HomeAnimalDataOuterClass;
+import emu.grasscutter.net.proto.HomeFurnitureDataOuterClass;
 import emu.grasscutter.utils.Position;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -17,20 +18,20 @@ public class HomeAnimalItem {
     Position spawnPos;
     Position spawnRot;
 
-    public HomeAnimalDataOuterClass.HomeAnimalData toProto() {
+    public HomeAnimalDataOuterClass.HomeAnimalData toProto(){
         return HomeAnimalDataOuterClass.HomeAnimalData.newBuilder()
-            .setFurnitureId(this.furnitureId)
-            .setSpawnPos(this.spawnPos.toProto())
-            .setSpawnRot(this.spawnRot.toProto())
-            .build();
+                .setFurnitureId(furnitureId)
+                .setSpawnPos(spawnPos.toProto())
+                .setSpawnRot(spawnRot.toProto())
+                .build();
     }
 
     public static HomeAnimalItem parseFrom(HomeAnimalDataOuterClass.HomeAnimalData homeAnimalData) {
         return HomeAnimalItem.of()
-            .furnitureId(homeAnimalData.getFurnitureId())
-            .spawnPos(new Position(homeAnimalData.getSpawnPos()))
-            .spawnRot(new Position(homeAnimalData.getSpawnRot()))
-            .build();
+                .furnitureId(homeAnimalData.getFurnitureId())
+                .spawnPos(new Position(homeAnimalData.getSpawnPos()))
+                .spawnRot(new Position(homeAnimalData.getSpawnRot()))
+                .build();
     }
 
 }

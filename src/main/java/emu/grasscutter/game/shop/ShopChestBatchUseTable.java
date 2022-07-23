@@ -8,7 +8,7 @@ public class ShopChestBatchUseTable {
     private List<Integer> optionItem = new ArrayList<>();
 
     public int getItemId() {
-        return this.itemId;
+        return itemId;
     }
 
     public void setItemId(int itemId) {
@@ -16,7 +16,7 @@ public class ShopChestBatchUseTable {
     }
 
     public List<Integer> getOptionItem() {
-        return this.optionItem;
+        return optionItem;
     }
 
     public void setOptionItem(List<Integer> optionItem) {

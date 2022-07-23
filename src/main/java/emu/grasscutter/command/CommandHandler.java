@@ -9,8 +9,6 @@ import static emu.grasscutter.utils.Language.translate;
 
 import java.util.List;
 
-import static emu.grasscutter.utils.Language.translate;
-
 public interface CommandHandler {
 
     /**
@@ -41,9 +39,8 @@ public interface CommandHandler {
 
     /**
      * Called when a player/console invokes a command.
-     *
      * @param sender The player/console that invoked the command.
-     * @param args   The arguments to the command.
+     * @param args The arguments to the command.
      */
     default void execute(Player sender, Player targetPlayer, List<String> args) {
     }

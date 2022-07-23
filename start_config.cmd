@@ -12,12 +12,12 @@ set CUR_PATH=%~dp0
 @rem Executable Path
 @rem Note: Fill DO_NOT_CHECK_PATH if you need to run it from PATH
 @rem without detecting whether the executable file exists
-set JAVA_PATH=C:\Program Files\Java\jdk-17.0.3.1\bin\
+set JAVA_PATH=C:\Program Files\Java\jdk-17.0.3\bin\
 set MITMDUMP_PATH=%CUR_PATH%
 set MONGODB_PATH=%CUR_PATH%
 
 @rem Utility Path
-set SERVER_JAR_PATH=G:\Grasscutters2.8.5\grasscutter.jar
+set SERVER_JAR_PATH=%CUR_PATH%
 set DATABASE_STORAGE_PATH=%CUR_PATH%resources\Database
 
 @rem Utility Name

@@ -10,7 +10,7 @@ public class TowerScheduleConfig {
 
 
     public int getScheduleId() {
-        return this.scheduleId;
+        return scheduleId;
     }
 
     public void setScheduleId(int scheduleId) {
@@ -18,7 +18,7 @@ public class TowerScheduleConfig {
     }
 
     public Date getScheduleStartTime() {
-        return this.scheduleStartTime;
+        return scheduleStartTime;
     }
 
     public void setScheduleStartTime(Date scheduleStartTime) {
@@ -26,7 +26,7 @@ public class TowerScheduleConfig {
     }
 
     public Date getNextScheduleChangeTime() {
-        return this.nextScheduleChangeTime;
+        return nextScheduleChangeTime;
     }
 
     public void setNextScheduleChangeTime(Date nextScheduleChangeTime) {

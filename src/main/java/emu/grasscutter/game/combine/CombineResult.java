@@ -1,8 +1,9 @@
 package emu.grasscutter.game.combine;
 
-import emu.grasscutter.data.common.ItemParamData;
-
 import java.util.List;
+
+import emu.grasscutter.data.common.ItemParamData;
+import emu.grasscutter.data.excels.CombineData;
 
 public class CombineResult {
     private List<ItemParamData> material;
@@ -11,7 +12,7 @@ public class CombineResult {
     private List<ItemParamData> back;
 
     public List<ItemParamData> getMaterial() {
-        return this.material;
+        return material;
     }
 
     public void setMaterial(List<ItemParamData> material) {
@@ -19,7 +20,7 @@ public class CombineResult {
     }
 
     public List<ItemParamData> getResult() {
-        return this.result;
+        return result;
     }
 
     public void setResult(List<ItemParamData> result) {
@@ -27,7 +28,7 @@ public class CombineResult {
     }
 
     public List<ItemParamData> getExtra() {
-        return this.extra;
+        return extra;
     }
 
     public void setExtra(List<ItemParamData> extra) {
@@ -35,7 +36,7 @@ public class CombineResult {
     }
 
     public List<ItemParamData> getBack() {
-        return this.back;
+        return back;
     }
 
     public void setBack(List<ItemParamData> back) {

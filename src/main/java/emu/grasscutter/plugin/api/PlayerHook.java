@@ -19,14 +19,13 @@ public final class PlayerHook {
     private final Player player;
 
     /**
-     * Hooks into the player.
-     *
+     * Hooks into the player. 
      * @param player The player to hook into.
      */
     public PlayerHook(Player player) {
         this.player = player;
     }
-
+    
     /**
      * Kicks a player from the server.
      * TODO: Refactor to kick using a packet.
@@ -37,7 +36,6 @@ public final class PlayerHook {
 
     /**
      * Sends a player to another scene.
-     *
      * @param sceneId The scene to send the player to.
      */
     public void changeScenes(int sceneId) {
@@ -46,7 +44,6 @@ public final class PlayerHook {
 
     /**
      * Broadcasts an avatar property notify to all world players.
-     *
      * @param property The property that was updated.
      */
     public void updateFightProperty(FightProperty property) {
@@ -55,7 +52,6 @@ public final class PlayerHook {
 
     /**
      * Broadcasts the packet sent to all world players.
-     *
      * @param packet The packet to send.
      */
     public void broadcastPacketToWorld(BasePacket packet) {
@@ -64,7 +60,6 @@ public final class PlayerHook {
 
     /**
      * Set the currently equipped avatar's health.
-     *
      * @param health The health to set the avatar to.
      */
     public void setHealth(float health) {
@@ -74,7 +69,6 @@ public final class PlayerHook {
 
     /**
      * Revives the specified avatar.
-     *
      * @param avatar The avatar to revive.
      */
     public void reviveAvatar(Avatar avatar) {
@@ -84,20 +78,18 @@ public final class PlayerHook {
     /**
      * Teleports a player to a position.
      * This will **not** transfer the player to another scene.
-     *
      * @param position The position to teleport the player to.
      */
     public void teleport(Position position) {
         this.player.getPos().set(position);
-        this.player.sendPacket(new PacketPlayerEnterSceneNotify(this.player,
-            EnterType.ENTER_TYPE_JUMP, EnterReason.TransPoint,
-            this.player.getSceneId(), position
+        this.player.sendPacket(new PacketPlayerEnterSceneNotify(this.player, 
+                EnterType.ENTER_TYPE_JUMP, EnterReason.TransPoint,
+                this.player.getSceneId(), position
         ));
     }
 
     /**
      * Gets the currently selected avatar's max health.
-     *
      * @return The max health as a float.
      */
     public float getMaxHealth() {
@@ -106,7 +98,6 @@ public final class PlayerHook {
 
     /**
      * Gets the currently selected avatar in entity form.
-     *
      * @return The avatar as an {@link EntityAvatar}.
      */
     public EntityAvatar getCurrentAvatarEntity() {
@@ -115,7 +106,6 @@ public final class PlayerHook {
 
     /**
      * Gets the currently selected avatar.
-     *
      * @return The avatar as an {@link Avatar}.
      */
     public Avatar getCurrentAvatar() {

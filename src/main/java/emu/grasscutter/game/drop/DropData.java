@@ -10,7 +10,7 @@ public class DropData {
     private boolean give = false;
 
     public boolean isGive() {
-        return this.give;
+        return give;
     }
 
     public void setGive(boolean give) {
@@ -18,7 +18,7 @@ public class DropData {
     }
 
     public int getItemId() {
-        return this.itemId;
+        return itemId;
     }
 
     public void setItemId(int itemId) {
@@ -26,26 +26,26 @@ public class DropData {
     }
 
     public int getMinCount() {
-        return this.minCount;
+        return minCount;
     }
 
 
     public int getMaxCount() {
-        return this.maxCount;
+        return maxCount;
     }
 
 
     public int getMinWeight() {
-        return this.minWeight;
+        return minWeight;
     }
 
     public int getMaxWeight() {
-        return this.maxWeight;
+        return maxWeight;
     }
 
 
     public boolean isShare() {
-        return this.share;
+        return share;
     }
 
     public void setIsShare(boolean share) {
