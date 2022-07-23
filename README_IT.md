@@ -11,13 +11,13 @@ https://www.mongodb.com/try/download/community<br>
 
 2: Scarica le risorse da qui: https://github.com/lassedds/3.0-Resources
 
-3: Metti la folder delle risorse scaricate sotto la folder di GC 3.0 // ricorda di rinominare con il nome "resources" la folder che stai mettendo sotto la folder di GC.
+3: Metti la cartella delle risorse scaricate sotto la cartella di GC 3.0 // ricorda di rinominare con il nome "resources" la cartella che stai mettendo sotto la cartella di GC.
 
 4: Click destro su start_config.cmd e clicca **Modifica**. Poi, trova la cartella "*bin*" della tua versione di java installata. La cartella di java dovrebbe essere nel percorso **`C:\Programmi\Java\`**, apri la cartella "*jdk-17.x.x.x*". Apri anche la cartella "*bin*" e da qui copia il percorso. Dovrebbe somigliare a questo: **`C:\Program Files\Java\jdk-17.x.x.x\bin\`**.  Modifica *start_config.cmd* mettendo il percorso precedente nella variabile "*JAVA_PATH=*".
 
 5: Fatto, ora puoi avviare *start.bat* per aprire il server.
 
-6: Adesso vai nella folder di Genshin 3.0 e metti <a href="https://drive.google.com/file/d/1esXUB4Q_Y_wDjvqnNbN8jiQUKsO11N1S/view?usp=sharing">questo</a> file in entrambi i percorsi:<br>
+6: Adesso vai nella cartella di Genshin 3.0 e metti <a href="https://drive.google.com/file/d/1esXUB4Q_Y_wDjvqnNbN8jiQUKsO11N1S/view?usp=sharing">questo</a> file in entrambi i percorsi:<br>
 	1. "*YOURGENSHINFOLDER/GenshinImpact_Data/Managed/Metadata*"<br>
 	2. "*YOURGENSHINFOLDER/GenshinImpact_Data/Native/Data/Metadata*"
 
