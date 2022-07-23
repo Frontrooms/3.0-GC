@@ -1,4 +1,4 @@
-EN | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README.tr.md">TR</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_FR.md">FR</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_JP.md">JP</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_IT.md">IT</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_pl.md">PL</a> |
+EN | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README.tr.md">TR</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_FR.md">FR</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_JP.md">JP</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_IT.md">IT</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_pl.md">PL</a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_zh.md">CN</a> |
 
 # 3.0-GC
 
