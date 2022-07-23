@@ -1,3 +1,5 @@
+<a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_zh.md">CN<a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_pl.md">PL<a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_VN.md">VN<a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_JP.md">JP<a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_IT.md">IT<a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README_FR.md">FR<a> | <a href="https://github.com/Frontrooms/3.0-GC/blob/main/README.tr.md">TR<a> | 
+
 # 3.0-GC
 
 You will need to download these 2 before you start<br>
