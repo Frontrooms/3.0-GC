@@ -5,7 +5,7 @@ https://download.oracle.com/java/17/archive/jdk-17.0.3.1_windows-x64_bin.exe<br>
 https://www.mongodb.com/try/download/compass<br>
 https://www.mongodb.com/try/download/community<br>
 
-##服务设置
+## 服务设置
 
 1.下载GC3.0版本:https://github.com/lassedds/3.0-GC/releases/tag/Release
 
@@ -13,15 +13,15 @@ https://www.mongodb.com/try/download/community<br>
 
 3.将资源文件放入3.0GC文件夹中并命名为"resources"。
 
-4.右键单击start_config.cmd文件，然后选择**编辑**。接下来，你必须在你安装的java版本的文件夹中找到"*bin*"文件夹。它应该在**`C:\Program Files\Java\`**，在此路径下打开"*jdk-17.x.x.x*"文件夹，然后打开"*bin*" 文件夹并复制文件路径。类似这样：**`C:\Program Files\Java\jdk-17.x.x.x\bin\`**。把它放进你的*start_config.cmd*文件作为变量 "*JAVA_PATH=*"。
+4.右键单击start_config.cmd文件，然后选择**编辑**。接下来，你必须在你安装的java版本的文件夹中找到 "*bin*" 文件夹。它应该在 **`C:\Program Files\Java\`**, 在此路径下打开 "*jdk-17.x.x.x*" 文件夹，然后打开 "*bin*" 文件夹并复制文件路径。类似这样: **`C:\Program Files\Java\jdk-17.x.x.x\bin\`**。  把它放进你的 *start_config.cmd* 文件作为变量 "*JAVA_PATH=*"。
 
-5:你现在可以使用*start .cmd*文件来开启服务。
+5:你现在可以使用*start .bat*文件来开启服务。
 
 6:打开你电脑上的3.0 Genshin文件夹，并把<a href="https://drive.google.com/file/d/1esXUB4Q_Y_wDjvqnNbN8jiQUKsO11N1S/view?usp=sharing">该文件</a>放在在这两个位置:<br>
 1. "*YOURGENSHINFOLDER/GenshinImpact _ Data/Managed/Metadata*"<br>
 2. "*YOURGENSHINFOLDER/GenshinImpact _ Data/Native/Data/Metadata*"
 
-##Fiddler 代理
+## Fiddler 代理
 
 1.从<a href=https://www.telerik.com/download/fiddler>这里</a>下载Fiddler Classic。
 
